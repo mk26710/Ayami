@@ -16,7 +16,7 @@ application {
 }
 
 java {
-	targetCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
@@ -31,7 +31,7 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<JavaExec> {
-    val f = File("build/run/")
+    val f = File(".run/")
     if (!f.exists()) {
         f.mkdir()
     }
@@ -47,6 +47,7 @@ tasks.jar {
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io/")
 }
 
 dependencies {
@@ -54,12 +55,14 @@ dependencies {
     implementation(platform(kotlin("bom")))
     // Use the Kotlin standard library.
     implementation(kotlin("stdlib"))
-	
     // Kotlinx Coroutines
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
-	
-	// Time management
-	implementation("joda-time:joda-time:2.10.13")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
+
+    // Time management
+    implementation("joda-time:joda-time:2.10.13")
+
+    // Discord API
+    implementation("net.dv8tion:JDA:5.0.0-alpha.2") { exclude(module = "opus-java") }
 
     // Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
