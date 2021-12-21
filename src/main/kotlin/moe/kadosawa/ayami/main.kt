@@ -1,3 +1,5 @@
+@file:JvmName("Main")
+
 package moe.kadosawa.ayami
 
 import kotlinx.cli.ArgParser
