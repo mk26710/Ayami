@@ -15,13 +15,29 @@ application {
     applicationDefaultJvmArgs = listOf("-Dfile.encoding=UTF-8")
 }
 
-java {
-    targetCompatibility = JavaVersion.VERSION_17
-    sourceCompatibility = JavaVersion.VERSION_17
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io/")
 }
 
-tasks.withType<JavaCompile> {
-    options.encoding = "UTF-8"
+dependencies {
+    // Use the Kotlin standard library.
+    implementation(kotlin("stdlib"))
+    // Kotlin CLI
+    implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.3")
+
+    // Logging
+    implementation("ch.qos.logback:logback-classic:1.2.9")
+    implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
+
+    // Time management
+    implementation("joda-time:joda-time:2.10.13")
+
+    // Discord API
+    implementation("net.dv8tion:JDA:5.0.0-alpha.2") { exclude(module = "opus-java") }
+
+    // Kotlinx Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
 }
 
 tasks.withType<KotlinCompile> {
@@ -37,35 +53,4 @@ tasks.withType<JavaExec> {
     }
 
     workingDir = f
-}
-
-tasks.jar {
-    manifest {
-        attributes["Main-Class"] = application.mainClass.get()
-    }
-}
-
-repositories {
-    mavenCentral()
-    maven("https://jitpack.io/")
-}
-
-dependencies {
-    // Align versions of all Kotlin components
-    implementation(platform(kotlin("bom")))
-    // Use the Kotlin standard library.
-    implementation(kotlin("stdlib"))
-    // Kotlinx Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
-
-    // Time management
-    implementation("joda-time:joda-time:2.10.13")
-
-    // Discord API
-    implementation("net.dv8tion:JDA:5.0.0-alpha.2") { exclude(module = "opus-java") }
-
-    // Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
-    // Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 }
