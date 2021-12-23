@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami
+package moe.kadosawa.ayami.utils
 
 import mu.KotlinLogging
 import java.io.File
@@ -19,7 +19,10 @@ object Config {
     val defaultPrefix: String
         get() = properties.getProperty("prefix.default")
 
-    fun readFromFile(path: String = "config.properties") {
+    val debugGuildId: String
+        get() = properties.getProperty("debug.guild.id")
+
+    fun fromFile(path: String = "config.properties") {
         val f = File(path)
         if (f.exists()) {
             properties.load(f.reader())

@@ -2,34 +2,38 @@
 
 package moe.kadosawa.ayami
 
-import kotlinx.cli.ArgParser
-import kotlinx.cli.ArgType
-import kotlinx.cli.default
-import moe.kadosawa.ayami.commands.handlePing
+import dev.minn.jda.ktx.injectKTX
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import moe.kadosawa.ayami.interfaces.Command
+import moe.kadosawa.ayami.commands.PingCommand
+import moe.kadosawa.ayami.commands.ResinCommand
 import moe.kadosawa.ayami.extensions.addCommand
 import moe.kadosawa.ayami.listeners.MainListener
+import moe.kadosawa.ayami.utils.Args
+import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-@Suppress("unused") private val logger = KotlinLogging.logger {}
+private val logger = KotlinLogging.logger {}
 
-val commands = mutableMapOf<String, (event: SlashCommandEvent) -> Any>()
+val commands = mutableMapOf<String, Command>()
+val jdaFullyReady = CompletableDeferred<Unit>()
+
+val commandsList = mutableSetOf<Command>()
 
 val jda by lazy {
     JDABuilder.createLight(Config.discordToken)
+        .injectKTX()
         .addEventListeners(MainListener())
         .build()
 }
 
-fun main(args: Array<String>) {
-    val parser = ArgParser("Ayami")
+fun main(args: Array<String>) = runBlocking<Unit> {
+    Args.parser.parse(args)
+    Config.fromFile(Args.configPath)
 
-    val configPath by parser.option(ArgType.String, fullName = "config", shortName = "c")
-        .default("config.properties")
-
-    parser.parse(args)
-    Config.readFromFile(configPath)
-
-    jda.addCommand("ping", "sends pong", ::handlePing)
+    launch { jda.addCommand(PingCommand()) }
+    launch { jda.addCommand(ResinCommand()) }
 }
