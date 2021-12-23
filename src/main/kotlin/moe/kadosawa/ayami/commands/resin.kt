@@ -4,6 +4,7 @@ import dev.minn.jda.ktx.interactions.option
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
+import moe.kadosawa.ayami.exceptions.InvalidInteractionOption
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.interfaces.Command
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -29,6 +30,10 @@ class ResinCommand : Command {
         val isPrivate = event.getOption("private")?.asBoolean ?: false
 
         event.deferReply().setEphemeral(isPrivate).await()
+
+        if (needed < current || needed == current){
+            throw InvalidInteractionOption("Your **needed** amount must be greater than **current**!")
+        }
 
         val deltaMinutes = (needed - current) * 8
         val now = Clock.System.now()
