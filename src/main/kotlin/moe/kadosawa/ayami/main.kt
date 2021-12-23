@@ -8,9 +8,9 @@ import dev.minn.jda.ktx.light
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import moe.kadosawa.ayami.interfaces.Command
 import moe.kadosawa.ayami.commands.PingCommand
 import moe.kadosawa.ayami.commands.ResinCommand
+import moe.kadosawa.ayami.interfaces.Command
 import moe.kadosawa.ayami.listeners.MainListener
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
