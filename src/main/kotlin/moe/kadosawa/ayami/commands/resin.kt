@@ -3,12 +3,10 @@ package moe.kadosawa.ayami.commands
 import dev.minn.jda.ktx.interactions.option
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
-import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.plus
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.interfaces.Command
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
-import kotlin.time.Duration
 import dev.minn.jda.ktx.interactions.Command as commandData
 
 
@@ -21,16 +19,18 @@ class ResinCommand : Command {
         option<Int>("needed", "How much resin you want to have", true) {
             setRequiredRange(1, 160)
         }
+
+        option<Boolean>("private", "Choose whether you want response to be seen by everyone or not")
     }
 
     override suspend fun execute(event: SlashCommandEvent) {
-        event.deferReply().await()
-
         val current = event.getOption("current")!!.asLong
         val needed = event.getOption("needed")!!.asLong
+        val isPrivate = event.getOption("private")?.asBoolean ?: false
+
+        event.deferReply().setEphemeral(isPrivate).await()
 
         val deltaMinutes = (needed - current) * 8
-
         val now = Clock.System.now()
         val then = now.plus(deltaMinutes, DateTimeUnit.MINUTE)
 
