@@ -10,6 +10,6 @@ object Args {
     val configPath by parser.option(ArgType.String, fullName = "config", shortName = "c")
         .default("config.properties")
 
-    val refreshCommands by parser.option(ArgType.Boolean, fullName = "refreshSlash")
+    val refreshSlash by parser.option(ArgType.Boolean, fullName = "refreshSlash")
         .default(true)
 }

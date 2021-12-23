@@ -1,13 +1,7 @@
 package moe.kadosawa.ayami.extensions
 
 import kotlinx.coroutines.CompletableDeferred
-import moe.kadosawa.ayami.commands
-import moe.kadosawa.ayami.commandsList
-import moe.kadosawa.ayami.interfaces.Command
-import moe.kadosawa.ayami.jdaFullyReady
-import moe.kadosawa.ayami.utils.Args
 import mu.KotlinLogging
-import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.requests.RestAction
 
 private val logger = KotlinLogging.logger {}
@@ -20,17 +14,6 @@ suspend fun <T : Any> RestAction<T>.await(): T {
     }
 
     return result.await()
-}
-
-suspend fun JDA.addCommand(command: Command) {
-    commandsList.add(command)
-    logger.info { "${command.data.name} was added" }
-
-    if (Args.refreshCommands) {
-        jdaFullyReady.await()
-        upsertCommand(command.data).queue()
-        logger.info { "upsert request for ${command.data.name} to global commands list was created" }
-    }
 }
 
 //fun commandData(name: String, description: String, init: CommandData.() -> Unit): CommandData =
