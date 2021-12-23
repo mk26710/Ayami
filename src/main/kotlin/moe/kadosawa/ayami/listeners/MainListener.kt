@@ -4,6 +4,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.commands
+import moe.kadosawa.ayami.exceptions.handleException
 import moe.kadosawa.ayami.jdaIsReady
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
@@ -22,7 +23,11 @@ class MainListener : ListenerAdapter() {
 
         if (cmd != null) {
             mainListenerScope.launch {
-                cmd.execute(event)
+                try {
+                    cmd.execute(event)
+                } catch (ex: Exception) {
+                    handleException(ex, event)
+                }
             }
         } else {
             event.reply("Command Not Found").setEphemeral(true).queue()
