@@ -31,13 +31,15 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
 
     // Time management
-    implementation("joda-time:joda-time:2.10.13")
+    // implementation("joda-time:joda-time:2.10.13")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
 
     // Discord API
     implementation("net.dv8tion:JDA:5.0.0-alpha.2") { exclude(module = "opus-java") }
+    implementation("com.github.minndevelopment:jda-ktx:d3c6b4db49622d7f9d6f2e4a9e4430231a6be849")
 
     // Kotlinx Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-RC3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
 }
 
 tasks.withType<KotlinCompile> {
