@@ -4,6 +4,7 @@ import kotlinx.coroutines.CompletableDeferred
 import mu.KotlinLogging
 import net.dv8tion.jda.api.requests.RestAction
 
+@Suppress("unused")
 private val logger = KotlinLogging.logger {}
 
 suspend fun <T : Any> RestAction<T>.await(): T {

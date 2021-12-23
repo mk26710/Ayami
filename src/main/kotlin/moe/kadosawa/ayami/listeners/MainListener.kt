@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
+@Suppress("unused")
 private val logger = KotlinLogging.logger {}
 
 class MainListener : ListenerAdapter() {
