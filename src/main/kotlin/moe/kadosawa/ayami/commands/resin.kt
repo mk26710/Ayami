@@ -6,12 +6,12 @@ import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
 import moe.kadosawa.ayami.exceptions.InvalidInteractionOption
 import moe.kadosawa.ayami.extensions.await
-import moe.kadosawa.ayami.interfaces.Command
+import moe.kadosawa.ayami.interfaces.Slash
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import dev.minn.jda.ktx.interactions.Command as commandData
 
 
-class ResinCommand : Command {
+class Resin : Slash() {
     override val data = commandData("resin", "Calculate when you'll have enough resin in genshin") {
         option<Int>("current", "Your current amount of resin", true) {
             setRequiredRange(0, 160)

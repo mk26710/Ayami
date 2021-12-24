@@ -8,9 +8,9 @@ import dev.minn.jda.ktx.light
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import moe.kadosawa.ayami.commands.PingCommand
-import moe.kadosawa.ayami.commands.ResinCommand
-import moe.kadosawa.ayami.interfaces.Command
+import moe.kadosawa.ayami.commands.Ping
+import moe.kadosawa.ayami.commands.Resin
+import moe.kadosawa.ayami.interfaces.Slash
 import moe.kadosawa.ayami.listeners.MainListener
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
@@ -23,7 +23,7 @@ private val logger = KotlinLogging.logger {}
 
 val jdaIsReady = CompletableDeferred<Unit>()
 
-var commands: MutableMap<String, Command> by Delegates.notNull()
+var commands: MutableMap<String, Slash> by Delegates.notNull()
 var jda: JDA by Delegates.notNull()
 
 private suspend fun onceReady() {
@@ -51,8 +51,8 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     Config.fromFile(Args.configPath)
 
     commands = mutableMapOf(
-        "ping" to PingCommand(),
-        "resin" to ResinCommand()
+        "ping" to Ping(),
+        "resin" to Resin(),
     )
 
     jda = light(Config.discordToken) {
