@@ -8,8 +8,8 @@ import dev.minn.jda.ktx.light
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import moe.kadosawa.ayami.commands.Ping
-import moe.kadosawa.ayami.commands.Resin
+import moe.kadosawa.ayami.commands.PingSlash
+import moe.kadosawa.ayami.commands.ResinSlash
 import moe.kadosawa.ayami.interfaces.Slash
 import moe.kadosawa.ayami.listeners.MainListener
 import moe.kadosawa.ayami.utils.Args
@@ -51,8 +51,8 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     Config.fromFile(Args.configPath)
 
     commands = mutableMapOf(
-        "ping" to Ping(),
-        "resin" to Resin(),
+        "ping" to PingSlash(),
+        "resin" to ResinSlash(),
     )
 
     jda = light(Config.discordToken) {

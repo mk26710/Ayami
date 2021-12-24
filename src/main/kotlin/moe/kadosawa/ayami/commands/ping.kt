@@ -8,7 +8,7 @@ import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import dev.minn.jda.ktx.interactions.Command as commandData
 
 
-class Ping : Slash() {
+class PingSlash : Slash() {
     override val data = commandData("ping", "Sends pong and then ping-pong") {
         option<Boolean>("private", "Choose whether you want response to be seen by everyone or not")
     }
