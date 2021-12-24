@@ -25,13 +25,12 @@ class ResinSlash : Slash() {
     }
 
     override suspend fun execute(event: SlashCommandEvent) {
+        event.deferReply().setEphemeral(isPrivate(event)).await()
+
         val current = event.getOption("current")!!.asLong
         val needed = event.getOption("needed")!!.asLong
-        val isPrivate = event.getOption("private")?.asBoolean ?: false
 
-        event.deferReply().setEphemeral(isPrivate).await()
-
-        if (needed < current || needed == current){
+        if (needed < current || needed == current) {
             throw InvalidInteractionOption("Your **needed** amount must be greater than **current**!")
         }
 

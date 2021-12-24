@@ -14,8 +14,7 @@ class PingSlash : Slash() {
     }
 
     override suspend fun execute(event: SlashCommandEvent) {
-        val isPrivate = event.getOption("private")?.asBoolean ?: false
-        event.reply("Pong!").setEphemeral(isPrivate).await()
+        event.reply("Pong!").setEphemeral(isPrivate(event)).await()
         delay(3000)
         event.hook.editOriginal("Ping-Pong!").await()
     }
