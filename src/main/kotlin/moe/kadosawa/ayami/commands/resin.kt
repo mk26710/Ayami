@@ -25,7 +25,7 @@ class ResinSlash : SlashExecutor() {
     }
 
     override suspend fun execute(event: SlashCommandEvent) {
-        event.deferReply().setEphemeral(isPrivate(event)).await()
+        event.deferReply(isPrivate(event)).await()
 
         val current = event.getOption("current")!!.asLong
         val needed = event.getOption("needed")!!.asLong
