@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import moe.kadosawa.ayami.commands.PingSlash
 import moe.kadosawa.ayami.commands.ResinSlash
-import moe.kadosawa.ayami.interfaces.Slash
+import moe.kadosawa.ayami.interfaces.SlashExecutor
 import moe.kadosawa.ayami.listeners.MainListener
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
@@ -23,7 +23,7 @@ private val logger = KotlinLogging.logger {}
 
 val jdaIsReady = CompletableDeferred<Unit>()
 
-var commands: MutableMap<String, Slash> by Delegates.notNull()
+var commands: MutableMap<String, SlashExecutor> by Delegates.notNull()
 var jda: JDA by Delegates.notNull()
 
 private suspend fun onceReady() {
