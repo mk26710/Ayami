@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
     application
 }
 
@@ -25,6 +26,9 @@ dependencies {
     implementation(kotlin("stdlib"))
     // Kotlin CLI
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.3")
+
+    // Serializer
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.10")
