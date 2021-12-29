@@ -40,6 +40,14 @@ dependencies {
 
     // Kotlinx Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+
+    // Database
+    implementation("com.zaxxer:HikariCP:5.0.0")
+    implementation("com.impossibl.pgjdbc-ng", "pgjdbc-ng", "0.8.3")
+    implementation("org.jetbrains.exposed", "exposed-core", "0.37.3")
+    implementation("org.jetbrains.exposed", "exposed-dao", "0.37.3")
+    implementation("org.jetbrains.exposed", "exposed-jdbc", "0.37.3")
+    implementation("org.jetbrains.exposed", "exposed-kotlin-datetime", "0.37.3")
 }
 
 tasks.withType<KotlinCompile> {
