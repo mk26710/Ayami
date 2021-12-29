@@ -27,7 +27,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.3")
 
     // Logging
-    implementation("ch.qos.logback:logback-classic:1.2.9")
+    implementation("ch.qos.logback:logback-classic:1.2.10")
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
 
     // Time management
