@@ -12,4 +12,7 @@ object Args {
 
     val refreshSlash by parser.option(ArgType.Boolean, fullName = "refreshSlash")
         .default(true)
+
+    val dbInit by parser.option(ArgType.Boolean, fullName = "dbInit")
+        .default(false)
 }
