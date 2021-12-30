@@ -2,6 +2,7 @@ package moe.kadosawa.ayami.extensions
 
 import kotlinx.coroutines.CompletableDeferred
 import mu.KotlinLogging
+import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.requests.RestAction
 
 @Suppress("unused")
@@ -19,6 +20,12 @@ suspend fun <T : Any> RestAction<T>.await(): T {
 
     return result.await()
 }
+
+/**
+ * Tells if user wants an ephemeral response
+ */
+val SlashCommandEvent.isPrivate
+    get() = getOption("private")?.asBoolean ?: false
 
 //fun commandData(name: String, description: String, init: CommandData.() -> Unit): CommandData =
 //    CommandData(name, description).apply(init)
