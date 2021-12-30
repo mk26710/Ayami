@@ -22,6 +22,7 @@ import mu.KotlinLogging
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
+import net.dv8tion.jda.api.interactions.commands.build.OptionData
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 import net.dv8tion.jda.api.requests.GatewayIntent
 import org.jetbrains.exposed.sql.Database
@@ -39,6 +40,14 @@ var slashData = listOf(
     CommandData("ping", "Sends pong and then ping-pong")
         .addOptions(privateOptionData),
     CommandData("resin", "Calculate when you'll have enough resin in genshin")
+        .addOptions(
+            OptionData(OptionType.INTEGER, "current", "Your current amount of resin", true)
+                .setRequiredRange(0, 159)
+        )
+        .addOptions(
+            OptionData(OptionType.INTEGER, "needed", "How much resin you want to have", true)
+                .setRequiredRange(1, 160)
+        )
         .addOptions(privateOptionData),
     CommandData("reminder", "Create or remove reminders")
         .addSubcommands(
