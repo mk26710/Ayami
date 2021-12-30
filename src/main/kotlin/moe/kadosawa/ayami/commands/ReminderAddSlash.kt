@@ -1,9 +1,8 @@
 package moe.kadosawa.ayami.commands
 
-import dev.minn.jda.ktx.interactions.Command
-import dev.minn.jda.ktx.interactions.option
 import kotlinx.datetime.Clock
 import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
 import moe.kadosawa.ayami.tables.Reminders
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -12,14 +11,10 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 import kotlin.time.Duration
 
 class ReminderAddSlash : SlashExecutor() {
-    override val data = Command("reminder-add", "Creates a reminder") {
-        option<String>("duration", "ISO-8601 duration format", true)
-        option<String>("content", "Message that you will receive", true)
-        option<Boolean>("private", "Choose whether you want response to be seen by everyone or not")
-    }
+    override val path = "reminder/add"
 
     override suspend fun execute(event: SlashCommandEvent) {
-        event.deferReply(isPrivate(event)).await()
+        event.deferReply(event.isPrivate).await()
         // Create an Instant before doing anything
         // in order to make things a bit more accurate
         val now = Clock.System.now()

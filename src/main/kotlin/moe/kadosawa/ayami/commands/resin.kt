@@ -1,31 +1,19 @@
 package moe.kadosawa.ayami.commands
 
-import dev.minn.jda.ktx.interactions.option
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
 import moe.kadosawa.ayami.exceptions.InvalidInteractionOption
 import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
-import dev.minn.jda.ktx.interactions.Command as commandData
-
 
 class ResinSlash : SlashExecutor() {
-    override val data = commandData("resin", "Calculate when you'll have enough resin in genshin") {
-        option<Int>("current", "Your current amount of resin", true) {
-            setRequiredRange(0, 160)
-        }
-
-        option<Int>("needed", "How much resin you want to have", true) {
-            setRequiredRange(1, 160)
-        }
-
-        option<Boolean>("private", "Choose whether you want response to be seen by everyone or not")
-    }
+    override val path = "resin"
 
     override suspend fun execute(event: SlashCommandEvent) {
-        event.deferReply(isPrivate(event)).await()
+        event.deferReply(event.isPrivate).await()
 
         val current = event.getOption("current")!!.asLong
         val needed = event.getOption("needed")!!.asLong
