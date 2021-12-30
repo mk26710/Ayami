@@ -32,14 +32,14 @@ suspend fun <T : Any> RestAction<T>.await(): T {
 /**
  * Adds ``private`` option to the command
  */
-fun CommandData.privateOption(): CommandData {
+fun CommandData.privacyOption(): CommandData {
     return addOptions(PRIVACY_OPTION_DATA)
 }
 
 /**
  * Adds ``private`` option to the subcommand
  */
-fun SubcommandData.privateOption(): SubcommandData {
+fun SubcommandData.privacyOption(): SubcommandData {
     return addOptions(PRIVACY_OPTION_DATA)
 }
 
