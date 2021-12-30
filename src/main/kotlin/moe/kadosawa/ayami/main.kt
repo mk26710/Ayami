@@ -17,8 +17,12 @@ import moe.kadosawa.ayami.tables.Reminders
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
 import moe.kadosawa.ayami.utils.dataSource
+import moe.kadosawa.ayami.utils.privateOptionData
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDA
+import net.dv8tion.jda.api.interactions.commands.OptionType
+import net.dv8tion.jda.api.interactions.commands.build.CommandData
+import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 import net.dv8tion.jda.api.requests.GatewayIntent
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
@@ -31,7 +35,22 @@ private val logger = KotlinLogging.logger {}
 
 val jdaIsReady = CompletableDeferred<Unit>()
 
-var commands: MutableMap<String, SlashExecutor> by Delegates.notNull()
+var slashData = listOf(
+    CommandData("ping", "Sends pong and then ping-pong")
+        .addOptions(privateOptionData),
+    CommandData("resin", "Calculate when you'll have enough resin in genshin")
+        .addOptions(privateOptionData),
+    CommandData("reminder", "Create or remove reminders")
+        .addSubcommands(
+            SubcommandData("add", "Create a new reminders")
+                .addOption(OptionType.STRING, "duration", "ISO-8601 duration format", true)
+                .addOption(OptionType.STRING, "content", "Message that you will receive", true)
+                .addOptions(privateOptionData)
+        )
+
+)
+
+var slashExecutors: MutableMap<String, SlashExecutor> by Delegates.notNull()
 var jda: JDA by Delegates.notNull()
 
 private suspend fun onceReady() {
@@ -39,15 +58,14 @@ private suspend fun onceReady() {
     jdaIsReady.await()
 
     if (Args.refreshSlash) {
-        val commandsData = commands.values.map { cmd -> cmd.data }
         // Re-add the commands
         jda.updateCommands()
-            .addCommands(commandsData)
+            .addCommands(slashData)
             .await()
 
         jda.getGuildById("911222786968674334")!!
             .updateCommands()
-            .addCommands(commandsData)
+            .addCommands(slashData)
             .await()
 
         logger.info { "Global and debug guild commands were re-added!" }
@@ -81,10 +99,10 @@ fun main(args: Array<String>) = runBlocking<Unit> {
     }
 
     // Create commands
-    commands = mutableMapOf(
+    slashExecutors = mutableMapOf(
         "ping" to PingSlash(),
         "resin" to ResinSlash(),
-        "reminder-add" to ReminderAddSlash()
+        "reminder/add" to ReminderAddSlash()
     )
 
     // Suspended function awaiting
