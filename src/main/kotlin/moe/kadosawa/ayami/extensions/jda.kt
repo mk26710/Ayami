@@ -7,6 +7,9 @@ import net.dv8tion.jda.api.requests.RestAction
 @Suppress("unused")
 private val logger = KotlinLogging.logger {}
 
+/**
+ * Wraps [RestAction.queue] into [CompletableDeferred]
+ */
 suspend fun <T : Any> RestAction<T>.await(): T {
     val result = CompletableDeferred<T>()
 
