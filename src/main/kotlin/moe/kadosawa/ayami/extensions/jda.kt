@@ -49,13 +49,38 @@ fun SubcommandData.privacyOption(): SubcommandData {
 val SlashCommandEvent.isPrivate
     get() = getOption("private")?.asBoolean ?: false
 
-//fun commandData(name: String, description: String, init: CommandData.() -> Unit): CommandData =
-//    CommandData(name, description).apply(init)
-//
-//fun CommandData.option(type: OptionType, name: String, description: String, required: Boolean = true, init: OptionData.() -> Unit): CommandData =
-//    this.addOptions(OptionData(type, name, description, required).apply(init))
-//
-//
-//fun OptionData.choice(name: String, value: Double) = addChoice(name, value)
-//fun OptionData.choice(name: String, value: Long) = addChoice(name, value)
-//fun OptionData.choice(name: String, value: String) = addChoice(name, value)
+/*
+ * Kotlin-style builders
+ */
+
+fun command(name: String, description: String, block: CommandData.() -> Unit = {}): CommandData {
+    return CommandData(name, description).apply(block)
+}
+
+fun subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): SubcommandData {
+    return SubcommandData(name, description).apply(block)
+}
+
+fun CommandData.subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): CommandData {
+    return addSubcommands(moe.kadosawa.ayami.extensions.subcommandData(name, description, block))
+}
+
+fun CommandData.option(
+    type: OptionType,
+    name: String,
+    description: String,
+    required: Boolean = true,
+    block: OptionData.() -> Unit = {}
+): CommandData {
+    return addOptions(OptionData(type, name, description, required).apply(block))
+}
+
+fun SubcommandData.option(
+    type: OptionType,
+    name: String,
+    description: String,
+    required: Boolean = true,
+    block: OptionData.() -> Unit = {}
+): SubcommandData {
+    return addOptions(OptionData(type, name, description, required).apply(block))
+}
