@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.commands
+package moe.kadosawa.ayami.commands.reminder
 
 import kotlinx.datetime.Clock
 import moe.kadosawa.ayami.extensions.await

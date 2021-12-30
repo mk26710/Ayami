@@ -9,7 +9,7 @@ import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import moe.kadosawa.ayami.commands.PingSlash
-import moe.kadosawa.ayami.commands.ReminderAddSlash
+import moe.kadosawa.ayami.commands.reminder.ReminderAddSlash
 import moe.kadosawa.ayami.commands.ResinSlash
 import moe.kadosawa.ayami.interfaces.SlashExecutor
 import moe.kadosawa.ayami.listeners.MainListener
