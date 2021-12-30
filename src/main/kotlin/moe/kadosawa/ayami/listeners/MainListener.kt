@@ -3,9 +3,9 @@ package moe.kadosawa.ayami.listeners
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import moe.kadosawa.ayami.commands
 import moe.kadosawa.ayami.exceptions.handleException
 import moe.kadosawa.ayami.jdaIsReady
+import moe.kadosawa.ayami.slashExecutors
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -18,8 +18,7 @@ class MainListener : ListenerAdapter() {
     private val mainListenerScope = CoroutineScope(Dispatchers.Default)
 
     override fun onSlashCommand(event: SlashCommandEvent) {
-        val name = event.name
-        val cmd = commands[name]
+        val cmd = slashExecutors[event.commandPath]
 
         if (cmd != null) {
             mainListenerScope.launch {
