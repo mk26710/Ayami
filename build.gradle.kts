@@ -30,6 +30,10 @@ dependencies {
     // Serializer
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
 
+    // Apache Commons Lang
+    implementation("org.apache.commons", "commons-lang3", "3.12.0")
+    implementation("org.apache.commons", "commons-text", "1.9")
+
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.10")
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
