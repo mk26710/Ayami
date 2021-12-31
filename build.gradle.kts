@@ -44,7 +44,6 @@ dependencies {
 
     // Discord API
     implementation("net.dv8tion:JDA:5.0.0-alpha.3") { exclude(module = "opus-java") }
-    implementation("com.github.minndevelopment:jda-ktx:d3c6b4db49622d7f9d6f2e4a9e4430231a6be849")
 
     // Kotlinx Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
