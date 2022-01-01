@@ -12,7 +12,7 @@ group = "moe.kadosawa"
 version = "0.0.1"
 
 application {
-    mainClass.set("moe.kadosawa.ayami.Main")
+    mainClass.set("moe.kadosawa.ayami.MainKt")
     applicationDefaultJvmArgs = listOf("-Dfile.encoding=UTF-8")
 }
 
