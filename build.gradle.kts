@@ -50,7 +50,7 @@ dependencies {
 
     // Database
     implementation("com.zaxxer:HikariCP:5.0.0")
-    implementation("com.impossibl.pgjdbc-ng", "pgjdbc-ng", "0.8.3")
+    implementation("org.postgresql:postgresql:42.3.1")
     implementation("org.jetbrains.exposed", "exposed-core", "0.37.3")
     implementation("org.jetbrains.exposed", "exposed-dao", "0.37.3")
     implementation("org.jetbrains.exposed", "exposed-jdbc", "0.37.3")
