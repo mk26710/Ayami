@@ -9,7 +9,7 @@ import kotlin.system.measureTimeMillis
 class PingSlash : SlashExecutor() {
     override val path = "ping"
 
-    override suspend fun execute(event: SlashCommandEvent) {
+    override suspend fun invoke(event: SlashCommandEvent) {
         event.deferReply(event.isPrivate).await()
         val rtt = measureTimeMillis {
             event.hook.sendMessage("Pong...").await()

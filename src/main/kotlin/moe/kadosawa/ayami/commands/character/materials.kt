@@ -4,7 +4,6 @@ import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
-import org.apache.commons.lang3.StringUtils
 import org.apache.commons.text.similarity.FuzzyScore
 import java.util.*
 
@@ -58,7 +57,7 @@ class CharacterMaterialsSlash : SlashExecutor() {
         )
     }
 
-    override suspend fun execute(event: SlashCommandEvent) {
+    override suspend fun invoke(event: SlashCommandEvent) {
         event.deferReply(event.isPrivate).await()
         val query = event.getOption("query")!!.asString
 

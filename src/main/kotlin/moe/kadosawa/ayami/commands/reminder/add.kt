@@ -12,7 +12,7 @@ import kotlin.time.Duration
 class ReminderAddSlash : SlashExecutor() {
     override val path = "reminder/add"
 
-    override suspend fun execute(event: SlashCommandEvent) {
+    override suspend fun invoke(event: SlashCommandEvent) {
         event.deferReply(event.isPrivate).await()
         // Create an Instant before doing anything
         // in order to make things a bit more accurate
