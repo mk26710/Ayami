@@ -8,6 +8,10 @@ import net.dv8tion.jda.api.interactions.commands.build.CommandData
 import net.dv8tion.jda.api.interactions.commands.build.OptionData
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
 import net.dv8tion.jda.api.requests.RestAction
+import java.util.function.Consumer
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 @Suppress("unused")
 private val logger = KotlinLogging.logger {}
@@ -19,14 +23,29 @@ private val PRIVACY_OPTION_DATA =
 /**
  * Wraps [RestAction.queue] into [CompletableDeferred]
  */
-suspend fun <T : Any> RestAction<T>.await(): T {
-    val result = CompletableDeferred<T>()
+//suspend fun <T : Any> RestAction<T>.await(): T {
+//    val result = CompletableDeferred<T>()
+//
+//    queue {
+//        result.complete(it)
+//    }
+//
+//    return result.await()
+//}
 
-    queue {
-        result.complete(it)
+/**
+ * Wraps [RestAction.queue] into [CompletableDeferred]
+ */
+suspend fun <T> RestAction<T>.await(): T = suspendCoroutine { cont ->
+    val onSuccess = Consumer<T> {
+        cont.resume(it)
     }
 
-    return result.await()
+    val onFailure = Consumer<Throwable> {
+        cont.resumeWithException(it)
+    }
+
+    queue(onSuccess, onFailure)
 }
 
 /**
