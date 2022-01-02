@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.tables
+package moe.kadosawa.ayami.database.tables
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable

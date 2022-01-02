@@ -4,7 +4,7 @@ import kotlinx.datetime.Clock
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
-import moe.kadosawa.ayami.tables.Reminders
+import moe.kadosawa.ayami.database.tables.Reminders
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction

@@ -1,12 +1,12 @@
 package moe.kadosawa.ayami.core
 
 import kotlinx.coroutines.*
+import moe.kadosawa.ayami.database.DatabaseFactory
 import moe.kadosawa.ayami.extensions.*
 import moe.kadosawa.ayami.listeners.MainListener
-import moe.kadosawa.ayami.tables.Reminders
+import moe.kadosawa.ayami.database.tables.Reminders
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
-import moe.kadosawa.ayami.utils.MyDatabase
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -61,8 +61,8 @@ object Ayami {
             }
         }
 
-        MyDatabase.connect()
-        MyDatabase.readyDeferred.await()
+        DatabaseFactory.connect()
+        DatabaseFactory.readyDeferred.await()
 
         if (Args.dbInit) {
             newSuspendedTransaction {
