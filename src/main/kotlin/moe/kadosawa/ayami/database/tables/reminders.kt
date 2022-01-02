@@ -34,11 +34,10 @@ data class Reminder(
 
 @Serializable
 data class NewReminder(
-    val id: Long?,
     val triggerAt: Instant,
     val authorId: Long,
-    val guildId: Long?,
-    val channelId: Long?,
-    val messageId: Long?,
-    val content: String,
+    val guildId: Long? = null,
+    val channelId: Long? = null,
+    val messageId: Long? = null,
+    val content: String = "...",
 )
