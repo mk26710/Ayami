@@ -49,12 +49,6 @@ abstract class SlashExecutor {
             throw CheckFailure("Sorry, you don't have access to this command.")
         }
 
-        try {
-            invoke(event)
-        } catch (e: CommandError) {
-            handleCommandError(e, event)
-        } catch (e: Throwable) {
-            handleCommandError(CommandInvokeError(cause = e), event)
-        }
+        invoke(event)
     }
 }

@@ -5,6 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.core.Ayami
 import moe.kadosawa.ayami.core.Slashes
+import moe.kadosawa.ayami.errors.CommandError
+import moe.kadosawa.ayami.errors.CommandInvokeError
+import moe.kadosawa.ayami.errors.handleCommandError
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -24,7 +27,13 @@ class MainListener : ListenerAdapter() {
         }
 
         mainListenerScope.launch {
-            cmd.run(event)
+            try {
+                cmd.run(event)
+            } catch (e: CommandError) {
+                handleCommandError(e, event)
+            } catch (e: Throwable) {
+                handleCommandError(CommandInvokeError(cause = e), event)
+            }
         }
     }
 
