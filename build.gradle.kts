@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     // Use the Kotlin standard library.
-    implementation(kotlin("stdlib"))
+    implementation(kotlin("stdlib-jdk8"))
     // Kotlin CLI
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.3")
 
