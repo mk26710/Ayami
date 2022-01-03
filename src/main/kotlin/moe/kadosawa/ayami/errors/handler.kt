@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.exceptions
+package moe.kadosawa.ayami.errors
 
 import moe.kadosawa.ayami.extensions.await
 import mu.KotlinLogging

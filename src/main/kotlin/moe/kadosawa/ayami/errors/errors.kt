@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.exceptions
+package moe.kadosawa.ayami.errors
 
 /**
  * Base error for commands

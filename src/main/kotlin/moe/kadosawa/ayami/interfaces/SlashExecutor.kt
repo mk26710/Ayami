@@ -1,8 +1,8 @@
 package moe.kadosawa.ayami.interfaces
 
-import moe.kadosawa.ayami.exceptions.CommandError
-import moe.kadosawa.ayami.exceptions.CommandInvokeError
-import moe.kadosawa.ayami.exceptions.handleCommandError
+import moe.kadosawa.ayami.errors.CommandError
+import moe.kadosawa.ayami.errors.CommandInvokeError
+import moe.kadosawa.ayami.errors.handleCommandError
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging

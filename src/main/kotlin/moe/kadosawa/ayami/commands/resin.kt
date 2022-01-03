@@ -3,7 +3,7 @@ package moe.kadosawa.ayami.commands
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
-import moe.kadosawa.ayami.exceptions.BadArgument
+import moe.kadosawa.ayami.errors.BadArgument
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
