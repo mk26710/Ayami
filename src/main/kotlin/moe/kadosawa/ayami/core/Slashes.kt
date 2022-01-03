@@ -1,6 +1,7 @@
 package moe.kadosawa.ayami.core
 
 import moe.kadosawa.ayami.commands.PingSlash
+import moe.kadosawa.ayami.commands.RefreshCommandsSlash
 import moe.kadosawa.ayami.commands.ResinSlash
 import moe.kadosawa.ayami.commands.character.CharacterMaterialsSlash
 import moe.kadosawa.ayami.commands.reminder.ReminderAddSlash
@@ -15,10 +16,18 @@ object Slashes {
         PingSlash(),
         ResinSlash(),
         ReminderAddSlash(),
-        CharacterMaterialsSlash()
+        CharacterMaterialsSlash(),
+        RefreshCommandsSlash
     ).associateBy { it.path }
 
-    val data = listOf(
+    val debugData = listOf(
+        command("refresh-commands", "Sends command update request to API") {
+            option(OptionType.BOOLEAN, "global", "Global commands list")
+            option(OptionType.BOOLEAN, "debug", "Debug guild commands list")
+        }
+    )
+
+    val globalData = listOf(
         command("ping", "Sends ping and then ping pong") {
             privacyOption()
         },
@@ -48,4 +57,6 @@ object Slashes {
             }
         }
     )
+
+    val combinedData = debugData + globalData
 }
