@@ -41,18 +41,19 @@ object Ayami {
      * Sends list of available slash
      * commands to the Discord API
      */
-    suspend fun refreshCommands(refreshGlobal: Boolean = true, refreshDebugGuild: Boolean = true) {
+    suspend fun refreshCommands(refreshGlobal: Boolean = true, refreshDebugGuild: Boolean = true): Boolean {
         jda.awaitReady()
 
         if (refreshGlobal) {
-            jda.updateCommands().addCommands(Slashes.data).await()
+            jda.updateCommands().addCommands(Slashes.globalData).await()
         }
 
         if (refreshDebugGuild) {
-            jda.getGuildById("911222786968674334")!!.updateCommands().addCommands(Slashes.data).await()
+            jda.getGuildById(Config.debugGuildId)!!.updateCommands().addCommands(Slashes.combinedData).await()
         }
 
         logger.info { "Global and debug guild commands were re-added!" }
+        return true
     }
 
     suspend fun start() = coroutineScope {
