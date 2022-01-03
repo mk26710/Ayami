@@ -17,9 +17,10 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 import kotlin.properties.Delegates
 import kotlin.system.exitProcess
 
-private val logger = KotlinLogging.logger {}
 
 object Ayami {
+    private val logger = KotlinLogging.logger {}
+
     var coroutineScope: CoroutineScope by Delegates.notNull()
 
     val readyDeferred = CompletableDeferred<Unit>()
