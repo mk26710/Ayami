@@ -5,9 +5,10 @@ import java.io.File
 import java.util.*
 import kotlin.system.exitProcess
 
-private val logger = KotlinLogging.logger {}
 
 object Config {
+    private val logger = KotlinLogging.logger {}
+
     private val properties = Properties().apply {
         setProperty("discord.token", "insert your token here")
         setProperty("prefix.default", "!")
