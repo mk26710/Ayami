@@ -9,6 +9,7 @@ import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.entities.ApplicationInfo
 import net.dv8tion.jda.api.requests.GatewayIntent
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.exists
@@ -34,6 +35,8 @@ object Ayami {
             .build()
     }
 
+    var appInfo by Delegates.notNull<ApplicationInfo>()
+
     /**
      * Sends list of available slash
      * commands to the Discord API
@@ -55,12 +58,6 @@ object Ayami {
     suspend fun start() = coroutineScope {
         coroutineScope = this
 
-        if (Args.refreshSlash) {
-            launch {
-                refreshCommands()
-            }
-        }
-
         DatabaseFactory.connect()
         DatabaseFactory.readyDeferred.await()
 
@@ -73,6 +70,16 @@ object Ayami {
 
             logger.info { "Tables were created" }
             exitProcess(0)
+        }
+
+        jda.awaitReady()
+
+        appInfo = jda.retrieveApplicationInfo().await()
+
+        if (Args.refreshSlash) {
+            launch {
+                refreshCommands()
+            }
         }
     }
 }
