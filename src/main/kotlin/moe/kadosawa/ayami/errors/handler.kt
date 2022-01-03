@@ -9,7 +9,7 @@ private val logger = KotlinLogging.logger {}
 
 suspend fun handleCommandError(e: CommandError, context: CommandInteraction) {
     if (!context.isAcknowledged) {
-        context.deferReply(true)
+        context.deferReply(true).await()
     }
 
     when (e) {
