@@ -46,7 +46,7 @@ dependencies {
     implementation("net.dv8tion:JDA:5.0.0-alpha.3") { exclude(module = "opus-java") }
 
     // Kotlinx Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0")
 
     // Database
     implementation("com.zaxxer:HikariCP:5.0.0")
