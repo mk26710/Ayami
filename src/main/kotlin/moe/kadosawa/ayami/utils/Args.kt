@@ -11,7 +11,7 @@ object Args {
         .default("config.properties")
 
     val refreshSlash by parser.option(ArgType.Boolean, fullName = "refreshSlash")
-        .default(true)
+        .default(false)
 
     val dbInit by parser.option(ArgType.Boolean, fullName = "dbInit")
         .default(false)
