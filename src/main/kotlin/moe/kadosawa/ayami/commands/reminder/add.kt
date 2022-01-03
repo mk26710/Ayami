@@ -9,7 +9,7 @@ import moe.kadosawa.ayami.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import kotlin.time.Duration
 
-class ReminderAddSlash : SlashExecutor() {
+object ReminderAddSlash : SlashExecutor() {
     override val path = "reminder/add"
 
     override suspend fun invoke(event: SlashCommandEvent) {

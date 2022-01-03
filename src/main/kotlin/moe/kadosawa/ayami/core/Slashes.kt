@@ -13,10 +13,10 @@ import net.dv8tion.jda.api.interactions.commands.OptionType
 
 object Slashes {
     val executors = listOf(
-        PingSlash(),
-        ResinSlash(),
-        ReminderAddSlash(),
-        CharacterMaterialsSlash(),
+        PingSlash,
+        ResinSlash,
+        ReminderAddSlash,
+        CharacterMaterialsSlash,
         RefreshCommandsSlash
     ).associateBy { it.path }
 

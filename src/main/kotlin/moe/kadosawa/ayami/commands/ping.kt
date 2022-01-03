@@ -6,7 +6,7 @@ import moe.kadosawa.ayami.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import kotlin.system.measureTimeMillis
 
-class PingSlash : SlashExecutor() {
+object PingSlash : SlashExecutor() {
     override val path = "ping"
 
     override suspend fun invoke(event: SlashCommandEvent) {

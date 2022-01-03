@@ -9,7 +9,7 @@ import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-class ResinSlash : SlashExecutor() {
+object ResinSlash : SlashExecutor() {
     override val path = "resin"
 
     override suspend fun invoke(event: SlashCommandEvent) {
