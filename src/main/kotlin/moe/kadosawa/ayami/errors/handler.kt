@@ -18,6 +18,11 @@ suspend fun handleCommandError(e: CommandError, context: CommandInteraction) {
             context.hook.sendMessage("Something went wrong..").await()
         }
 
+        is CheckFailure -> {
+            val msg = e.message ?: "You can't run this command."
+            context.hook.sendMessage(msg).await()
+        }
+
         is BadArgument -> {
             val msg = e.message ?: "You have provided an invalid input."
             context.hook.sendMessage(msg).await()
