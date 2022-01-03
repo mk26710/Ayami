@@ -1,6 +1,7 @@
 import java.io.File
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+val exposedVersion = "0.37.3"
 
 plugins {
     kotlin("jvm") version "1.6.10"
@@ -51,10 +52,10 @@ dependencies {
     // Database
     implementation("com.zaxxer:HikariCP:5.0.0")
     implementation("org.postgresql:postgresql:42.3.1")
-    implementation("org.jetbrains.exposed", "exposed-core", "0.37.3")
-    implementation("org.jetbrains.exposed", "exposed-dao", "0.37.3")
-    implementation("org.jetbrains.exposed", "exposed-jdbc", "0.37.3")
-    implementation("org.jetbrains.exposed", "exposed-kotlin-datetime", "0.37.3")
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
 }
 
 tasks.withType<KotlinCompile> {
