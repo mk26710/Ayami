@@ -1,9 +1,6 @@
 package moe.kadosawa.ayami.interfaces
 
-import moe.kadosawa.ayami.errors.CommandError
-import moe.kadosawa.ayami.errors.CommandInvokeError
-import moe.kadosawa.ayami.errors.handleCommandError
-import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.errors.CheckFailure
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -42,16 +39,14 @@ abstract class SlashExecutor {
     suspend fun run(event: SlashCommandEvent) {
         if (debugOnly) {
             if (event.guild?.id != Config.debugGuildId) {
-                event.reply("This is debug only command, you can't run it here.").setEphemeral(true).await()
-                return
+                throw CheckFailure("This is debug only command, you can't run it here.")
             }
         }
 
         val hasAccess = check(event)
 
         if (!hasAccess) {
-            event.reply("Sorry, you don't have access to this command.").setEphemeral(true).await()
-            return
+            throw CheckFailure("Sorry, you don't have access to this command.")
         }
 
         try {
