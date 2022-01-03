@@ -40,7 +40,6 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
 
     // Time management
-    // implementation("joda-time:joda-time:2.10.13")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
 
     // Discord API
