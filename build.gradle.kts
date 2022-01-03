@@ -26,7 +26,7 @@ dependencies {
     // Use the Kotlin standard library.
     implementation(kotlin("stdlib-jdk8"))
     // Kotlin CLI
-    implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.4")
 
     // Serializer
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
