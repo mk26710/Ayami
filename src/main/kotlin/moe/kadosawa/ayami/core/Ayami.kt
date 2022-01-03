@@ -21,10 +21,19 @@ import kotlin.system.exitProcess
 object Ayami {
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Main coroutine scope
+     */
     var coroutineScope: CoroutineScope by Delegates.notNull()
 
+    /**
+     * Completes once [jda] is ready
+     */
     val readyDeferred = CompletableDeferred<Unit>()
 
+    /**
+     * Instance of [net.dv8tion.jda.api.JDA]
+     */
     val jda by lazy {
         JDABuilder.createLight(Config.discordToken)
             .addEventListeners(MainListener())
@@ -36,6 +45,9 @@ object Ayami {
             .build()
     }
 
+    /**
+     * Discord Application info
+     */
     var appInfo by Delegates.notNull<ApplicationInfo>()
 
     /**
@@ -57,6 +69,9 @@ object Ayami {
         return true
     }
 
+    /**
+     * Entrypoint for [Ayami]
+     */
     suspend fun start() = coroutineScope {
         coroutineScope = this
 
