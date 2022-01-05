@@ -38,7 +38,7 @@ abstract class SlashExecutor {
      */
     suspend fun run(event: SlashCommandEvent) {
         if (debugOnly) {
-            if (event.guild?.id != Config.debugGuildId) {
+            if (event.guild?.id != Config.Bot.guild) {
                 throw CheckFailure("This is debug only command, you can't run it here.")
             }
         }
