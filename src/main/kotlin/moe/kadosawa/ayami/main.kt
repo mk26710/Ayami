@@ -7,6 +7,7 @@ import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 
 
+@Suppress("unused")
 private val logger = KotlinLogging.logger {}
 
 @Suppress("RemoveExplicitTypeArguments")
