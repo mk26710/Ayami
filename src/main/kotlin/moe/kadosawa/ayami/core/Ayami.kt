@@ -35,7 +35,7 @@ object Ayami {
      * Instance of [net.dv8tion.jda.api.JDA]
      */
     val jda by lazy {
-        JDABuilder.createLight(Config.discordToken)
+        JDABuilder.createLight(Config.Bot.token)
             .addEventListeners(MainListener())
             .enableIntents(
                 GatewayIntent.GUILD_MEMBERS,
@@ -62,7 +62,7 @@ object Ayami {
         }
 
         if (refreshDebugGuild) {
-            jda.getGuildById(Config.debugGuildId)!!.updateCommands().addCommands(Slashes.combinedData).await()
+            jda.getGuildById(Config.Bot.guild)!!.updateCommands().addCommands(Slashes.combinedData).await()
         }
 
         logger.info { "Global and debug guild commands were re-added!" }

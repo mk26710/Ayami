@@ -12,7 +12,7 @@ private val logger = KotlinLogging.logger {}
 @Suppress("RemoveExplicitTypeArguments")
 fun main(args: Array<String>) = runBlocking<Unit> {
     Args.parser.parse(args)
-    Config.fromFile(Args.configPath)
+    Config.load(Args.configPath)
 
     Ayami.start()
 }
