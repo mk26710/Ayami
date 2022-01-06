@@ -1,6 +1,6 @@
 package moe.kadosawa.ayami.extensions
 
-import kotlinx.coroutines.future.await
+import kotlinx.coroutines.future.asDeferred
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.interactions.commands.OptionType
@@ -20,7 +20,7 @@ private val PRIVACY_OPTION_DATA =
  * Waits for a result of [RestAction] without blocking the thread
  */
 suspend fun <T> RestAction<T>.await(): T {
-    return submit().await()
+    return submit().asDeferred().await()
 }
 
 /**
