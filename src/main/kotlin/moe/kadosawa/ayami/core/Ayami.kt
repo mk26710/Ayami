@@ -22,9 +22,10 @@ object Ayami {
     private val logger = KotlinLogging.logger {}
 
     /**
-     * Main coroutine scope
+     * Coroutine scope used to launch coroutines
+     * from [net.dv8tion.jda.api.JDA] listeners
      */
-    var coroutineScope: CoroutineScope by Delegates.notNull()
+    val listenerScope = CoroutineScope(Dispatchers.Default)
 
     /**
      * Completes once [jda] is ready
@@ -73,8 +74,6 @@ object Ayami {
      * Entrypoint for [Ayami]
      */
     suspend fun start() = coroutineScope {
-        coroutineScope = this
-
         DatabaseFactory.connect()
         DatabaseFactory.readyDeferred.await()
 

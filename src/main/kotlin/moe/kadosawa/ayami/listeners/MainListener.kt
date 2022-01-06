@@ -1,7 +1,5 @@
 package moe.kadosawa.ayami.listeners
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.core.Ayami
 import moe.kadosawa.ayami.core.Slashes
@@ -16,8 +14,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 class MainListener : ListenerAdapter() {
     private val logger = KotlinLogging.logger {}
 
-    private val mainListenerScope = CoroutineScope(Dispatchers.Default)
-
     override fun onSlashCommand(event: SlashCommandEvent) {
         val cmd = Slashes.executors[event.commandPath]
 
@@ -26,7 +22,8 @@ class MainListener : ListenerAdapter() {
             return
         }
 
-        mainListenerScope.launch {
+        Ayami.listenerScope.launch {
+            println("${this.coroutineContext}")
             try {
                 cmd.run(event)
             } catch (e: CommandError) {
