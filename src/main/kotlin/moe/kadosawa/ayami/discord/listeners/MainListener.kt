@@ -2,10 +2,10 @@ package moe.kadosawa.ayami.discord.listeners
 
 import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.discord.core.Ayami
+import moe.kadosawa.ayami.discord.core.ErrorHandler
 import moe.kadosawa.ayami.discord.core.Slashes
 import moe.kadosawa.ayami.discord.errors.CommandError
 import moe.kadosawa.ayami.discord.errors.CommandInvokeError
-import moe.kadosawa.ayami.discord.errors.handleCommandError
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
@@ -27,9 +27,9 @@ class MainListener : ListenerAdapter() {
             try {
                 cmd.run(event)
             } catch (e: CommandError) {
-                handleCommandError(e, event)
+                ErrorHandler.handle(e, event)
             } catch (e: Throwable) {
-                handleCommandError(CommandInvokeError(cause = e), event)
+                ErrorHandler.handle(CommandInvokeError(cause = e), event)
             }
         }
     }
