@@ -20,7 +20,7 @@ object CharacterMaterialsSlash : SlashExecutor() {
         val score = FuzzyScore(Locale.ENGLISH)
 
         GenshinService.characters.forEach { c->
-            val scored = score.fuzzyScore(c.enum.fullname, query) ?: 0
+            val scored = score.fuzzyScore(c.enum.fullName, query) ?: 0
             if (scored > 0) {
                 results.add(Pair(scored, c))
             }
