@@ -23,9 +23,9 @@ object ResinSlash : SlashExecutor() {
             throw BadArgument(e.message)
         }
 
-        val fullTimestamp = TimeFormat.DATE_TIME_LONG.format(refillsAt.toEpochMilliseconds())
-        val relativeTimestamp = TimeFormat.RELATIVE.format(refillsAt.toEpochMilliseconds())
+        val dateTimeShort = TimeFormat.DATE_TIME_SHORT.format(refillsAt.toEpochMilliseconds())
+        val timeRelative = TimeFormat.RELATIVE.format(refillsAt.toEpochMilliseconds())
 
-        event.hook.sendMessage("You will have **$needed** resin at $fullTimestamp ($relativeTimestamp)").await()
+        event.hook.sendMessage("**$needed** resin will be replenished at $dateTimeShort ($timeRelative)").await()
     }
 }
