@@ -4,7 +4,7 @@ package moe.kadosawa.ayami.genshin
  * Enumeration of playable Genshin Impact
  * characters as of version 2.4
  */
-enum class GenshinCharacters(val fullname: String) {
+enum class GenshinCharacters(val fullName: String) {
     ALBEDO("Albedo"),
     ALOY("Aloy"),
     ARATAKI_ITTO("Arataki Itto"),
