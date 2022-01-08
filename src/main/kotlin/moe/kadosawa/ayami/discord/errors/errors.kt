@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.errors
+package moe.kadosawa.ayami.discord.errors
 
 /**
  * Base error for commands

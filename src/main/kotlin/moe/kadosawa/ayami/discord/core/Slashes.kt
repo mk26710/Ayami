@@ -1,14 +1,14 @@
-package moe.kadosawa.ayami.core
+package moe.kadosawa.ayami.discord.core
 
-import moe.kadosawa.ayami.commands.PingSlash
-import moe.kadosawa.ayami.commands.RefreshCommandsSlash
-import moe.kadosawa.ayami.commands.ResinSlash
-import moe.kadosawa.ayami.commands.character.CharacterMaterialsSlash
-import moe.kadosawa.ayami.commands.reminder.ReminderAddSlash
-import moe.kadosawa.ayami.extensions.command
-import moe.kadosawa.ayami.extensions.option
-import moe.kadosawa.ayami.extensions.privacyOption
-import moe.kadosawa.ayami.extensions.subcommandData
+import moe.kadosawa.ayami.discord.commands.PingSlash
+import moe.kadosawa.ayami.discord.commands.RefreshCommandsSlash
+import moe.kadosawa.ayami.discord.commands.ResinSlash
+import moe.kadosawa.ayami.discord.commands.character.CharacterMaterialsSlash
+import moe.kadosawa.ayami.discord.commands.reminder.ReminderAddSlash
+import moe.kadosawa.ayami.discord.extensions.command
+import moe.kadosawa.ayami.discord.extensions.option
+import moe.kadosawa.ayami.discord.extensions.privacyOption
+import moe.kadosawa.ayami.discord.extensions.subcommandData
 import net.dv8tion.jda.api.interactions.commands.OptionType
 
 object Slashes {

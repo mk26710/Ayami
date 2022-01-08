@@ -1,9 +1,9 @@
-package moe.kadosawa.ayami.commands
+package moe.kadosawa.ayami.discord.commands
 
-import moe.kadosawa.ayami.core.Ayami
-import moe.kadosawa.ayami.errors.BadArgument
-import moe.kadosawa.ayami.extensions.await
-import moe.kadosawa.ayami.interfaces.SlashExecutor
+import moe.kadosawa.ayami.discord.core.Ayami
+import moe.kadosawa.ayami.discord.errors.BadArgument
+import moe.kadosawa.ayami.discord.extensions.await
+import moe.kadosawa.ayami.discord.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
 object RefreshCommandsSlash : SlashExecutor() {

@@ -1,7 +1,7 @@
 package moe.kadosawa.ayami
 
 import kotlinx.coroutines.runBlocking
-import moe.kadosawa.ayami.core.Ayami
+import moe.kadosawa.ayami.discord.core.Ayami
 import moe.kadosawa.ayami.utils.Args
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging

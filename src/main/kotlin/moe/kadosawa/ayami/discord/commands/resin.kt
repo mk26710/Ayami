@@ -1,12 +1,12 @@
-package moe.kadosawa.ayami.commands
+package moe.kadosawa.ayami.discord.commands
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.plus
-import moe.kadosawa.ayami.errors.BadArgument
-import moe.kadosawa.ayami.extensions.await
-import moe.kadosawa.ayami.extensions.isPrivate
-import moe.kadosawa.ayami.interfaces.SlashExecutor
+import moe.kadosawa.ayami.discord.errors.BadArgument
+import moe.kadosawa.ayami.discord.extensions.await
+import moe.kadosawa.ayami.discord.extensions.isPrivate
+import moe.kadosawa.ayami.discord.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
 object ResinSlash : SlashExecutor() {

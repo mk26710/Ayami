@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.extensions
+package moe.kadosawa.ayami.discord.extensions
 
 import kotlinx.coroutines.future.asDeferred
 import mu.KotlinLogging
@@ -56,7 +56,7 @@ fun subcommandData(name: String, description: String, block: SubcommandData.() -
 }
 
 fun CommandData.subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): CommandData {
-    return addSubcommands(moe.kadosawa.ayami.extensions.subcommandData(name, description, block))
+    return addSubcommands(moe.kadosawa.ayami.discord.extensions.subcommandData(name, description, block))
 }
 
 fun CommandData.option(

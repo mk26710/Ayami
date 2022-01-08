@@ -1,6 +1,6 @@
-package moe.kadosawa.ayami.interfaces
+package moe.kadosawa.ayami.discord.interfaces
 
-import moe.kadosawa.ayami.errors.CheckFailure
+import moe.kadosawa.ayami.discord.errors.CheckFailure
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent

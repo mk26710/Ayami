@@ -1,6 +1,6 @@
-package moe.kadosawa.ayami.errors
+package moe.kadosawa.ayami.discord.errors
 
-import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.discord.extensions.await
 import mu.KotlinLogging
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction
 

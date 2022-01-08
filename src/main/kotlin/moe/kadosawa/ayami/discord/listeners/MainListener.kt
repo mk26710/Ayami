@@ -1,11 +1,11 @@
-package moe.kadosawa.ayami.listeners
+package moe.kadosawa.ayami.discord.listeners
 
 import kotlinx.coroutines.launch
-import moe.kadosawa.ayami.core.Ayami
-import moe.kadosawa.ayami.core.Slashes
-import moe.kadosawa.ayami.errors.CommandError
-import moe.kadosawa.ayami.errors.CommandInvokeError
-import moe.kadosawa.ayami.errors.handleCommandError
+import moe.kadosawa.ayami.discord.core.Ayami
+import moe.kadosawa.ayami.discord.core.Slashes
+import moe.kadosawa.ayami.discord.errors.CommandError
+import moe.kadosawa.ayami.discord.errors.CommandInvokeError
+import moe.kadosawa.ayami.discord.errors.handleCommandError
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent

@@ -1,10 +1,10 @@
-package moe.kadosawa.ayami.commands.character
+package moe.kadosawa.ayami.discord.commands.character
 
-import moe.kadosawa.ayami.extensions.await
-import moe.kadosawa.ayami.extensions.isPrivate
+import moe.kadosawa.ayami.discord.extensions.await
+import moe.kadosawa.ayami.discord.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinService
 import moe.kadosawa.ayami.genshin.models.GenshinCharacter
-import moe.kadosawa.ayami.interfaces.SlashExecutor
+import moe.kadosawa.ayami.discord.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import org.apache.commons.text.similarity.FuzzyScore
 import java.util.*
