@@ -23,7 +23,6 @@ class MainListener : ListenerAdapter() {
         }
 
         Ayami.listenerScope.launch {
-            println("${this.coroutineContext}")
             try {
                 cmd.run(event)
             } catch (e: CommandError) {
