@@ -25,6 +25,8 @@ repositories {
 dependencies {
     // Use the Kotlin standard library.
     implementation(kotlin("stdlib-jdk8"))
+    // Kotlin's reflection library
+    implementation(kotlin("reflect"))
     // Kotlin CLI
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.4")
 
