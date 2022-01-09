@@ -1,10 +1,6 @@
 package moe.kadosawa.ayami.discord.core
 
-import moe.kadosawa.ayami.discord.commands.Ping
-import moe.kadosawa.ayami.discord.commands.RefreshCommands
-import moe.kadosawa.ayami.discord.commands.Resin
-import moe.kadosawa.ayami.discord.commands.CharacterMaterials
-import moe.kadosawa.ayami.discord.commands.ReminderAdd
+import moe.kadosawa.ayami.discord.commands.*
 import moe.kadosawa.ayami.extensions.command
 import moe.kadosawa.ayami.extensions.option
 import moe.kadosawa.ayami.extensions.privacyOption
@@ -12,13 +8,9 @@ import moe.kadosawa.ayami.extensions.subcommandData
 import net.dv8tion.jda.api.interactions.commands.OptionType
 
 object Slashes {
-    val executors = listOf(
-        Ping,
-        Resin,
-        ReminderAdd,
-        CharacterMaterials,
-        RefreshCommands
-    ).associateBy { it.path }
+    val executors = BaseSlash::class.sealedSubclasses
+        .mapNotNull { it.objectInstance }
+        .associateBy { it.path }
 
     val debugData = listOf(
         command("refresh-commands", "Sends command update request to API") {
