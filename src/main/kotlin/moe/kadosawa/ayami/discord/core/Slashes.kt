@@ -3,8 +3,8 @@ package moe.kadosawa.ayami.discord.core
 import moe.kadosawa.ayami.discord.commands.PingSlash
 import moe.kadosawa.ayami.discord.commands.RefreshCommandsSlash
 import moe.kadosawa.ayami.discord.commands.ResinSlash
-import moe.kadosawa.ayami.discord.commands.character.CharacterMaterialsSlash
-import moe.kadosawa.ayami.discord.commands.reminder.ReminderAddSlash
+import moe.kadosawa.ayami.discord.commands.CharacterMaterialsSlash
+import moe.kadosawa.ayami.discord.commands.ReminderAddSlash
 import moe.kadosawa.ayami.discord.extensions.command
 import moe.kadosawa.ayami.discord.extensions.option
 import moe.kadosawa.ayami.discord.extensions.privacyOption

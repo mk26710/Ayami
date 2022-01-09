@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.discord.commands.reminder
+package moe.kadosawa.ayami.discord.commands
 
 import kotlinx.datetime.Clock
 import moe.kadosawa.ayami.database.services.RemindersService

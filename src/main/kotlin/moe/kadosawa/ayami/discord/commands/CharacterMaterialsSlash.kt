@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.discord.commands.character
+package moe.kadosawa.ayami.discord.commands
 
 import moe.kadosawa.ayami.discord.extensions.await
 import moe.kadosawa.ayami.discord.extensions.isPrivate
