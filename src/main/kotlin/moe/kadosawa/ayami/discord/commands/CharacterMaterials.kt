@@ -4,12 +4,11 @@ import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinService
 import moe.kadosawa.ayami.genshin.models.GenshinCharacter
-import moe.kadosawa.ayami.discord.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import org.apache.commons.text.similarity.FuzzyScore
 import java.util.*
 
-object CharacterMaterialsSlash : SlashExecutor() {
+object CharacterMaterials : BaseSlash() {
     override val path = "character/materials"
 
     override suspend fun invoke(event: SlashCommandEvent) {

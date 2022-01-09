@@ -1,11 +1,11 @@
-package moe.kadosawa.ayami.discord.interfaces
+package moe.kadosawa.ayami.discord.commands
 
 import moe.kadosawa.ayami.discord.errors.CheckFailure
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-abstract class SlashExecutor {
+sealed class BaseSlash {
     @Suppress("unused")
     private val logger = KotlinLogging.logger {}
 

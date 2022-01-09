@@ -1,10 +1,10 @@
 package moe.kadosawa.ayami.discord.core
 
-import moe.kadosawa.ayami.discord.commands.PingSlash
-import moe.kadosawa.ayami.discord.commands.RefreshCommandsSlash
-import moe.kadosawa.ayami.discord.commands.ResinSlash
-import moe.kadosawa.ayami.discord.commands.CharacterMaterialsSlash
-import moe.kadosawa.ayami.discord.commands.ReminderAddSlash
+import moe.kadosawa.ayami.discord.commands.Ping
+import moe.kadosawa.ayami.discord.commands.RefreshCommands
+import moe.kadosawa.ayami.discord.commands.Resin
+import moe.kadosawa.ayami.discord.commands.CharacterMaterials
+import moe.kadosawa.ayami.discord.commands.ReminderAdd
 import moe.kadosawa.ayami.extensions.command
 import moe.kadosawa.ayami.extensions.option
 import moe.kadosawa.ayami.extensions.privacyOption
@@ -13,11 +13,11 @@ import net.dv8tion.jda.api.interactions.commands.OptionType
 
 object Slashes {
     val executors = listOf(
-        PingSlash,
-        ResinSlash,
-        ReminderAddSlash,
-        CharacterMaterialsSlash,
-        RefreshCommandsSlash
+        Ping,
+        Resin,
+        ReminderAdd,
+        CharacterMaterials,
+        RefreshCommands
     ).associateBy { it.path }
 
     val debugData = listOf(
