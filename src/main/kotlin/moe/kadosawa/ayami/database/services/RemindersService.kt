@@ -4,8 +4,7 @@ import moe.kadosawa.ayami.database.tables.NewReminder
 import moe.kadosawa.ayami.database.tables.Reminder
 import moe.kadosawa.ayami.database.tables.Reminders
 import mu.KotlinLogging
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
 object RemindersService {
@@ -47,5 +46,20 @@ object RemindersService {
         }
 
         return toReminder(row)
+    }
+
+    /**
+     * Returns a list of [Reminder]s that belong to specified
+     * user in the specified guild (if it's not null)
+     */
+    suspend fun getUserReminders(userId: Long, guildId: Long?): List<Reminder> {
+        val rows = newSuspendedTransaction {
+            Reminders
+                .select { (Reminders.authorId eq userId) and (Reminders.guildId eq guildId) }
+                .orderBy(Reminders.triggerAt to SortOrder.ASC)
+                .toList()
+        }
+
+        return rows.map { toReminder(it) }
     }
 }
