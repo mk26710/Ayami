@@ -2,7 +2,7 @@ package moe.kadosawa.ayami.discord.core
 
 import kotlinx.coroutines.*
 import moe.kadosawa.ayami.database.DatabaseFactory
-import moe.kadosawa.ayami.discord.extensions.*
+import moe.kadosawa.ayami.extensions.*
 import moe.kadosawa.ayami.discord.listeners.MainListener
 import moe.kadosawa.ayami.database.tables.Reminders
 import moe.kadosawa.ayami.utils.Args

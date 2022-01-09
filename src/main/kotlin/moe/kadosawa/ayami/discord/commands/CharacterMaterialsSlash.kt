@@ -1,7 +1,7 @@
 package moe.kadosawa.ayami.discord.commands
 
-import moe.kadosawa.ayami.discord.extensions.await
-import moe.kadosawa.ayami.discord.extensions.isPrivate
+import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinService
 import moe.kadosawa.ayami.genshin.models.GenshinCharacter
 import moe.kadosawa.ayami.discord.interfaces.SlashExecutor

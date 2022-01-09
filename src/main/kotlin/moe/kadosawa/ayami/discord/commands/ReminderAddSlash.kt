@@ -3,8 +3,8 @@ package moe.kadosawa.ayami.discord.commands
 import kotlinx.datetime.Clock
 import moe.kadosawa.ayami.database.services.RemindersService
 import moe.kadosawa.ayami.database.tables.NewReminder
-import moe.kadosawa.ayami.discord.extensions.await
-import moe.kadosawa.ayami.discord.extensions.isPrivate
+import moe.kadosawa.ayami.extensions.await
+import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.discord.interfaces.SlashExecutor
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import kotlin.time.Duration

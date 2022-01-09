@@ -5,10 +5,10 @@ import moe.kadosawa.ayami.discord.commands.RefreshCommandsSlash
 import moe.kadosawa.ayami.discord.commands.ResinSlash
 import moe.kadosawa.ayami.discord.commands.CharacterMaterialsSlash
 import moe.kadosawa.ayami.discord.commands.ReminderAddSlash
-import moe.kadosawa.ayami.discord.extensions.command
-import moe.kadosawa.ayami.discord.extensions.option
-import moe.kadosawa.ayami.discord.extensions.privacyOption
-import moe.kadosawa.ayami.discord.extensions.subcommandData
+import moe.kadosawa.ayami.extensions.command
+import moe.kadosawa.ayami.extensions.option
+import moe.kadosawa.ayami.extensions.privacyOption
+import moe.kadosawa.ayami.extensions.subcommandData
 import net.dv8tion.jda.api.interactions.commands.OptionType
 
 object Slashes {
