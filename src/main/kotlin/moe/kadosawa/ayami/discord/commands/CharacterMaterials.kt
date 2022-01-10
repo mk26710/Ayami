@@ -1,5 +1,6 @@
 package moe.kadosawa.ayami.discord.commands
 
+import moe.kadosawa.ayami.discord.enums.MaterialType
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinService
@@ -14,6 +15,7 @@ object CharacterMaterials : BaseSlash() {
     override suspend fun invoke(event: SlashCommandEvent) {
         event.deferReply(event.isPrivate).await()
         val query = event.getOption("query")!!.asString
+        val type = MaterialType.valueOf(event.getOption("type")!!.asString.uppercase())
 
         val results = mutableListOf<Pair<Int, GenshinCharacter>>()
         val score = FuzzyScore(Locale.ENGLISH)
@@ -37,7 +39,12 @@ object CharacterMaterials : BaseSlash() {
             event.hook.sendMessage("There are multiple results:\n${closestResults.joinToString("\n")}").await()
         } else {
             val (_, character) = closestResults.first()
-            event.hook.sendMessage("${character.ascension}").await()
+            val msg = when (type) {
+                MaterialType.ASCENSION -> character.ascension
+                MaterialType.TALENTS -> character.talents
+            }
+
+            event.hook.sendMessage("$msg").await()
 
         }
     }
