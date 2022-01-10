@@ -51,6 +51,8 @@ object Slashes {
                 option(OptionType.STRING, "content", "Message that you will receive")
                 privacyOption()
             }
+
+            subcommandData("list", "Shows list of your active reminders")
         }
     )
 
