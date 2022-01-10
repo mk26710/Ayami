@@ -1,5 +1,8 @@
 package moe.kadosawa.ayami.genshin.enums
 
+import org.apache.commons.text.similarity.FuzzyScore
+import java.util.*
+
 /**
  * Enumeration of playable Genshin Impact
  * characters as of version 2.4
@@ -53,5 +56,26 @@ enum class GenshinCharacters(vararg val fullNames: String) {
     companion object {
         fun fromFullName(s: String) =
             values().find { c -> c.fullNames.any { name -> name == s } }
+
+        fun approximateByFullName(query: String): GenshinCharacters? {
+            val results = mutableListOf<Pair<Int, GenshinCharacters>>()
+            val sc = FuzzyScore(Locale.ENGLISH)
+
+            values().forEach { c ->
+                // Shortcut if query exactly matches any name of the character of current iteration
+                if (c.fullNames.any { it.lowercase() == query.lowercase()}) {
+                    return c
+                }
+
+                c.fullNames.forEach { name ->
+                    val scored = sc.fuzzyScore(query, name)
+                    if (scored > 1) {
+                        results.add(Pair(scored, c))
+                    }
+                }
+            }
+
+            return results.maxWithOrNull(compareBy { it.first })?.second
+        }
     }
 }
