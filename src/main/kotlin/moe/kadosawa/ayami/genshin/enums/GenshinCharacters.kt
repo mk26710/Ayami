@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.genshin
+package moe.kadosawa.ayami.genshin.enums
 
 /**
  * Enumeration of playable Genshin Impact

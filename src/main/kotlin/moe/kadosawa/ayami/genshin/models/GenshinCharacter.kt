@@ -2,7 +2,7 @@ package moe.kadosawa.ayami.genshin.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import moe.kadosawa.ayami.genshin.GenshinCharacters
+import moe.kadosawa.ayami.genshin.enums.GenshinCharacters
 
 @Serializable
 data class GenshinCharacter(
