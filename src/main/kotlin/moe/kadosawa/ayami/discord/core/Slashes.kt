@@ -26,6 +26,10 @@ object Slashes {
 
         command("character", "Get data about genshin impact characters") {
             subcommandData("materials", "Check what ascension and talent materials are") {
+                option(OptionType.STRING, "type", "What sort fo materials you are looking for") {
+                    addChoice("ascension", "ASCENSION")
+                    addChoice("talents", "TALENTS")
+                }
                 option(OptionType.STRING, "query", "Character name (e.g. Kamisato Ayaka, Yae Miko, etc.)")
                 privacyOption()
             }
