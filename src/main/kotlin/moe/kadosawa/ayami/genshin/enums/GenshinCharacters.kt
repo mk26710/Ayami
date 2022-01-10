@@ -4,10 +4,10 @@ package moe.kadosawa.ayami.genshin.enums
  * Enumeration of playable Genshin Impact
  * characters as of version 2.4
  */
-enum class GenshinCharacters(val fullName: String) {
+enum class GenshinCharacters(vararg val fullNames: String) {
     ALBEDO("Albedo"),
     ALOY("Aloy"),
-    ARATAKI_ITTO("Arataki Itto"),
+    ARATAKI_ITTO("Arataki Itto", "Itto Arataki"),
     BARBARA("Barbara"),
     BEIDOU("Beidou"),
     BENNETT("Bennett"),
@@ -19,22 +19,22 @@ enum class GenshinCharacters(val fullName: String) {
     GANYU("Ganyu"),
     GOROU("Gorou"),
     HU_TAO("Hu Tao"),
-    JEAN("Jean"),
-    KAEDEHARA_KAZUHA("Kaedehara Kazuha"),
+    JEAN("Jean Gunnhildr", "Gunnhildr Jean"),
+    KAEDEHARA_KAZUHA("Kaedehara Kazuha", "Kazuha Kaedehara"),
     KAEYA("Kaeya"),
-    KAMISATO_AYAKA("Kamisato Ayaka"),
+    KAMISATO_AYAKA("Kamisato Ayaka", "Ayaka Kamisato"),
     KEQING("Keqing"),
     KLEE("Klee"),
-    KUJOU_SARA("Kujou Sara"),
+    KUJOU_SARA("Kujou Sara", "Sara Kujou"),
     LISA("Lisa"),
     MONA("Mona"),
     NINGGUANG("Ningguang"),
     NOELLE("Noelle"),
     QIQI("Qiqi"),
-    RAIDEN_SHOGUN("Raiden Shogun"),
+    RAIDEN_SHOGUN("Ei", "Baal", "Raiden Shogun", "Shogun Raiden"),
     RAZOR("Razor"),
     ROSARIA("Rosaria"),
-    SANGONOMIYA_KOKOMI("Sangonomiya Kokomi"),
+    SANGONOMIYA_KOKOMI("Sangonomiya Kokomi", "Kokomi Sangonomiya"),
     SAYU("Sayu"),
     SHENHE("Shenhe"),
     SUCROSE("Sucrose"),
@@ -51,6 +51,7 @@ enum class GenshinCharacters(val fullName: String) {
     ZHONGLI("Zhongli");
 
     companion object {
-        fun fromName(s: String) = valueOf(s.replace(" ", "_").uppercase())
+        fun fromFullName(s: String) =
+            values().find { c -> c.fullNames.any { name -> name == s } }
     }
 }
