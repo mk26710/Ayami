@@ -5,6 +5,6 @@ Most players have a Discord account, so I decided to use Discord as the platform
 
 ## Roadmap
 
- - [ ] Easy-to-read images with data for each in-game character (1/144 images are already created)
+ - [ ] Easy-to-read images with data for each in-game character (2/144 images are already created)
  - [ ] Resin replenishment reminders system
  - [ ] Image generation instead of using premade ones (I really doubt this ever happens btw)
