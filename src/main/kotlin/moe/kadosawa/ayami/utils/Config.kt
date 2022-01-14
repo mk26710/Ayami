@@ -11,11 +11,26 @@ object Config {
     private val properties = Properties().apply {
         setProperty("bot.token", "insert your token here")
         setProperty("bot.guild", "12312345151")
+        setProperty("hikari.user", "<database owner username>")
+        setProperty("hikari.password", "<user password>")
+        setProperty("hikari.name", "<database name>")
+        setProperty("hikari.host", "localhost")
+        setProperty("hikari.port", "5432")
     }
 
     object Bot {
         val token: String = properties.getProperty("bot.token")
         val guild: String = properties.getProperty("bot.guild")
+    }
+
+    object Hikari {
+        val user: String = properties.getProperty("hikari.user")
+        val password: String = properties.getProperty("hikari.password")
+        val name: String = properties.getProperty("hikari.name")
+        val host: String = properties.getProperty("hikari.host")
+        val port: String = properties.getProperty("hikari.port")
+
+        fun jdbcUrl() = "jdbc:postgresql://$host:$port/$name"
     }
 
     fun load(path: String = "config.properties") {
