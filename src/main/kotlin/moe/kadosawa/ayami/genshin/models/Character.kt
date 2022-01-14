@@ -2,12 +2,12 @@ package moe.kadosawa.ayami.genshin.models
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import moe.kadosawa.ayami.genshin.enums.GenshinCharacters
+import moe.kadosawa.ayami.genshin.enums.Characters
 
 @Serializable
-data class GenshinCharacter(
+data class Character(
     @SerialName("ENUM")
-    val enum: GenshinCharacters,
+    val enum: Characters,
     @SerialName("ASCENSION")
     val ascension: String?,
     @SerialName("TALENTS")

@@ -4,7 +4,7 @@ import moe.kadosawa.ayami.discord.enums.MaterialType
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinService
-import moe.kadosawa.ayami.genshin.enums.GenshinCharacters
+import moe.kadosawa.ayami.genshin.enums.Characters
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
 object CharacterMaterials : BaseSlash() {
@@ -15,7 +15,7 @@ object CharacterMaterials : BaseSlash() {
         val query = event.getOption("query")!!.asString
         val type = MaterialType.valueOf(event.getOption("type")!!.asString.uppercase())
 
-        val bestResultEnum = GenshinCharacters.approximateByFullName(query)
+        val bestResultEnum = Characters.approximateByFullName(query)
 
         if (bestResultEnum == null) {
             event.hook.sendMessage("I tried really hard but nothing was found by that query :(")

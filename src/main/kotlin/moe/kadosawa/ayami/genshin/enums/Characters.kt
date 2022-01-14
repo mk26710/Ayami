@@ -7,7 +7,7 @@ import java.util.*
  * Enumeration of playable Genshin Impact
  * characters as of version 2.4
  */
-enum class GenshinCharacters(vararg val fullNames: String) {
+enum class Characters(vararg val fullNames: String) {
     ALBEDO("Albedo"),
     ALOY("Aloy"),
     ARATAKI_ITTO("Arataki Itto", "Itto Arataki"),
@@ -57,8 +57,8 @@ enum class GenshinCharacters(vararg val fullNames: String) {
         fun fromFullName(s: String) =
             values().find { c -> c.fullNames.any { name -> name == s } }
 
-        fun approximateByFullName(query: String): GenshinCharacters? {
-            val results = mutableListOf<Pair<Int, GenshinCharacters>>()
+        fun approximateByFullName(query: String): Characters? {
+            val results = mutableListOf<Pair<Int, Characters>>()
             val sc = FuzzyScore(Locale.ENGLISH)
 
             values().forEach { c ->
