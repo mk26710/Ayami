@@ -14,7 +14,7 @@ object ReminderList : BaseSlash() {
 
         val reminders = RemindersService.getUserReminders(event.user.idLong, event.guild?.idLong)
         if (reminders.isEmpty()) {
-            event.hook.sendMessage("You don't have any active reminders.")
+            event.hook.sendMessage("You don't have any active reminders.").await()
             return
         }
 
