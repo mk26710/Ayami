@@ -23,9 +23,9 @@ class MainListener : ListenerAdapter() {
             try {
                 cmd.run(event)
             } catch (e: CommandError) {
-                ErrorHandler.handle(e, event)
+                handleCommandError(e, event)
             } catch (e: Throwable) {
-                ErrorHandler.handle(CommandInvokeError(cause = e), event)
+                handleCommandError(CommandInvokeError(cause = e), event)
             }
         }
     }
