@@ -3,7 +3,6 @@ package moe.kadosawa.ayami.database
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import kotlinx.coroutines.CompletableDeferred
-import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
