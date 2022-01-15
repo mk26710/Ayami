@@ -1,6 +1,6 @@
 package moe.kadosawa.ayami.discord.commands
 
-import moe.kadosawa.ayami.discord.errors.BadArgument
+import moe.kadosawa.ayami.discord.BadArgument
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.extensions.isPrivate
 import moe.kadosawa.ayami.genshin.GenshinUtils

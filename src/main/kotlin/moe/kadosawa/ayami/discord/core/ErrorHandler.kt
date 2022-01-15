@@ -1,9 +1,9 @@
 package moe.kadosawa.ayami.discord.core
 
-import moe.kadosawa.ayami.discord.errors.BadArgument
-import moe.kadosawa.ayami.discord.errors.CheckFailure
-import moe.kadosawa.ayami.discord.errors.CommandError
-import moe.kadosawa.ayami.discord.errors.CommandInvokeError
+import moe.kadosawa.ayami.discord.BadArgument
+import moe.kadosawa.ayami.discord.CheckFailure
+import moe.kadosawa.ayami.discord.CommandError
+import moe.kadosawa.ayami.discord.CommandInvokeError
 import moe.kadosawa.ayami.extensions.await
 import mu.KotlinLogging
 import net.dv8tion.jda.api.interactions.commands.CommandInteraction

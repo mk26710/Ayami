@@ -1,7 +1,7 @@
 package moe.kadosawa.ayami.discord.commands
 
 import moe.kadosawa.ayami.discord.core.Ayami
-import moe.kadosawa.ayami.discord.errors.BadArgument
+import moe.kadosawa.ayami.discord.BadArgument
 import moe.kadosawa.ayami.extensions.await
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 

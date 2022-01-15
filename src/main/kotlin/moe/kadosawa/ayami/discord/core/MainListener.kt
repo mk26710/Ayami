@@ -1,8 +1,8 @@
 package moe.kadosawa.ayami.discord.core
 
 import kotlinx.coroutines.launch
-import moe.kadosawa.ayami.discord.errors.CommandError
-import moe.kadosawa.ayami.discord.errors.CommandInvokeError
+import moe.kadosawa.ayami.discord.CommandError
+import moe.kadosawa.ayami.discord.CommandInvokeError
 import mu.KotlinLogging
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
