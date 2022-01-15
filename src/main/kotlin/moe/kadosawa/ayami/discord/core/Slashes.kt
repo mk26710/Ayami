@@ -1,6 +1,6 @@
 package moe.kadosawa.ayami.discord.core
 
-import moe.kadosawa.ayami.discord.commands.*
+import moe.kadosawa.ayami.discord.commands.BaseSlash
 import moe.kadosawa.ayami.extensions.command
 import moe.kadosawa.ayami.extensions.option
 import moe.kadosawa.ayami.extensions.privacyOption
