@@ -1,21 +1,14 @@
 package moe.kadosawa.ayami.discord.core
 
 import kotlinx.coroutines.*
-import moe.kadosawa.ayami.database.DatabaseFactory
-import moe.kadosawa.ayami.extensions.*
 import moe.kadosawa.ayami.discord.listeners.MainListener
-import moe.kadosawa.ayami.database.tables.Reminders
-import moe.kadosawa.ayami.utils.Args
+import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.ApplicationInfo
 import net.dv8tion.jda.api.requests.GatewayIntent
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.exists
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import kotlin.properties.Delegates
-import kotlin.system.exitProcess
 
 
 object Ayami {
@@ -68,34 +61,5 @@ object Ayami {
 
         logger.info { "Global and debug guild commands were re-added!" }
         return true
-    }
-
-    /**
-     * Entrypoint for [Ayami]
-     */
-    suspend fun start() = coroutineScope {
-        DatabaseFactory.connect()
-        DatabaseFactory.readyDeferred.await()
-
-        if (Args.dbInit) {
-            newSuspendedTransaction {
-                if (!Reminders.exists()) {
-                    SchemaUtils.create(Reminders)
-                }
-            }
-
-            logger.info { "Tables were created" }
-            exitProcess(0)
-        }
-
-        jda.awaitReady()
-
-        appInfo = jda.retrieveApplicationInfo().await()
-
-        if (Args.refreshSlash) {
-            launch {
-                refreshCommands()
-            }
-        }
     }
 }
