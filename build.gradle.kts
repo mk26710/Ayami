@@ -51,7 +51,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0")
 
     // Database
-    implementation("com.zaxxer:HikariCP:5.0.0")
+    implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.postgresql:postgresql:42.3.1")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
