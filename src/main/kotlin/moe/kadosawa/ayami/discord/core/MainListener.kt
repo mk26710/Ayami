@@ -1,9 +1,6 @@
-package moe.kadosawa.ayami.discord.listeners
+package moe.kadosawa.ayami.discord.core
 
 import kotlinx.coroutines.launch
-import moe.kadosawa.ayami.discord.core.Ayami
-import moe.kadosawa.ayami.discord.core.ErrorHandler
-import moe.kadosawa.ayami.discord.core.Slashes
 import moe.kadosawa.ayami.discord.errors.CommandError
 import moe.kadosawa.ayami.discord.errors.CommandInvokeError
 import mu.KotlinLogging

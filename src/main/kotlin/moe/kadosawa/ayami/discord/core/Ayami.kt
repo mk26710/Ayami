@@ -1,7 +1,6 @@
 package moe.kadosawa.ayami.discord.core
 
 import kotlinx.coroutines.*
-import moe.kadosawa.ayami.discord.listeners.MainListener
 import moe.kadosawa.ayami.extensions.await
 import moe.kadosawa.ayami.utils.Config
 import mu.KotlinLogging
