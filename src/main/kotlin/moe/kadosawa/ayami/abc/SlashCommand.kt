@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.commands
+package moe.kadosawa.ayami.abc
 
 import moe.kadosawa.ayami.CheckFailure
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent

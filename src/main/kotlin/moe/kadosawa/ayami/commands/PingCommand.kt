@@ -1,5 +1,6 @@
 package moe.kadosawa.ayami.commands
 
+import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.isPrivate
 import moe.kadosawa.ayami.jda.tryDefer

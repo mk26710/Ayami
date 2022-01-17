@@ -2,7 +2,7 @@ package moe.kadosawa.ayami
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import moe.kadosawa.ayami.commands.SlashCommand
+import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.listeners.DefaultListener
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder

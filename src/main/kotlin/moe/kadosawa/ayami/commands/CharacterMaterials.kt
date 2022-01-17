@@ -1,5 +1,6 @@
 package moe.kadosawa.ayami.commands
 
+import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.enums.MaterialType
 import moe.kadosawa.ayami.genshin.Characters
 import moe.kadosawa.ayami.genshin.Genshin
