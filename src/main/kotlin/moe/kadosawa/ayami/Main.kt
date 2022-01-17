@@ -5,7 +5,6 @@ import moe.kadosawa.ayami.commands.CharacterMaterials
 import moe.kadosawa.ayami.commands.PingCommand
 import moe.kadosawa.ayami.commands.ResinCommand
 import moe.kadosawa.ayami.database.DatabaseFactory
-import moe.kadosawa.ayami.genshin.Genshin
 import mu.KotlinLogging
 import kotlin.system.exitProcess
 
