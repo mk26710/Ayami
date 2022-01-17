@@ -18,7 +18,7 @@ class DefaultListener : ListenerAdapter() {
 
         Ayami.coroutineScope.launch {
             try {
-                command.invoke(event)
+                command.run(event)
             } catch (ex: AyamiBaseException) {
                 ExceptionHandler.handle(event, ex)
             } catch (ex: Throwable) {
