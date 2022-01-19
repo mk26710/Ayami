@@ -1,14 +1,14 @@
 [
   {
     "ENUM": "KAMISATO_AYAKA",
-    "ASCENSION": "https://cdn.discordapp.com/attachments/928635306092154930/930064662861602836/Kasmiato_Ayaka__Ascension.png",
-    "TALENTS": "https://cdn.discordapp.com/attachments/928635306092154930/930064697301008384/Kamisato_Ayaka__Talents.png",
+    "ASCENSION": "https://cdn.discordapp.com/attachments/928635306092154930/933386065312628766/Kasmiato_Ayaka__Ascension.png",
+    "TALENTS": "https://cdn.discordapp.com/attachments/928635306092154930/933386064830275624/Kamisato_Ayaka__Talents.png",
     "GUIDE": null
   },
   {
-    "ENUM": "MONA",
-    "ASCENSION": null,
-    "TALENTS": null,
+    "ENUM": "SHENHE",
+    "ASCENSION": "https://cdn.discordapp.com/attachments/928635306092154930/933386203695308871/Shenhe__Ascension.png",
+    "TALENTS": "https://cdn.discordapp.com/attachments/928635306092154930/933386203271692378/Shenhe__Talents.png",
     "GUIDE": null
   }
 ]
