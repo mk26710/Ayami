@@ -23,32 +23,31 @@ repositories {
 }
 
 dependencies {
-    // Use the Kotlin standard library.
     implementation(kotlin("stdlib-jdk8"))
-    // Kotlin's reflection library
     implementation(kotlin("reflect"))
     // Kotlin CLI
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.4")
-
+    // Kotlinx Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0")
     // Serializer
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+    // Time management
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
 
-    // Apache Commons Lang
-    implementation("org.apache.commons", "commons-lang3", "3.12.0")
-    implementation("org.apache.commons", "commons-text", "1.9")
+    // Guava
+    implementation("com.google.guava:guava:31.0.1-jre")
+
+    // Apache Commons
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("org.apache.commons:commons-text:1.9")
+    implementation("org.apache.commons:commons-math3:3.6.1")
 
     // Logging
     implementation("ch.qos.logback:logback-classic:1.2.10")
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
 
-    // Time management
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
-
     // Discord API
-    implementation("net.dv8tion:JDA:5.0.0-alpha.3") { exclude(module = "opus-java") }
-
-    // Kotlinx Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.0")
+    implementation("net.dv8tion:JDA:5.0.0-alpha.4") { exclude(module = "opus-java") }
 
     // Database
     implementation("com.zaxxer:HikariCP:5.0.1")
@@ -61,7 +60,7 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "16"
+        jvmTarget = "17"
     }
 }
 
