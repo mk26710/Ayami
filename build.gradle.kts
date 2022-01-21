@@ -25,6 +25,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
+    testImplementation(kotlin("test"))
     // Kotlin CLI
     implementation("org.jetbrains.kotlinx:kotlinx-cli-jvm:0.3.4")
     // Kotlinx Coroutines
