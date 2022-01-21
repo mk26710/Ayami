@@ -1,4 +1,4 @@
-package moe.kadosawa.ayami.tests
+package moe.kadosawa.ayami
 
 import moe.kadosawa.ayami.genshin.Characters
 import kotlin.test.Test
