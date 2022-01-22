@@ -17,7 +17,7 @@ data class Character(
 )
 
 fun Character.Companion.fromSimilarName(query: String): Character {
-    val similarEnum = Characters.fromSimilarName(query)
+    val similarEnum = characterTypeFromSimilarName(query)
         ?: throw AyamiException("unable to find enum for character by $query")
 
     return Genshin.characters.find { it.enum == similarEnum }
