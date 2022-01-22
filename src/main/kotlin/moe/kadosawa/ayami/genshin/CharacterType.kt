@@ -29,7 +29,7 @@ private annotation class DisablePermutation(val value: Array<String>)
  * characters as of version 2.4
  */
 @DisablePermutation(["HU_TAO", "YUN_JIN"])
-enum class Characters {
+enum class CharacterType {
     ALBEDO,
     ALOY,
     ARATAKI_ITTO,
@@ -80,21 +80,21 @@ enum class Characters {
  * Map of name aliases for characters that have them
  */
 private val aliases = mapOf(
-    Characters.JEAN to listOf("Jean Gunnhildr"),
-    Characters.YUN_JIN to listOf("Yunjin"),
-    Characters.RAIDEN_SHOGUN to listOf("Ei", "Baal"),
+    CharacterType.JEAN to listOf("Jean Gunnhildr"),
+    CharacterType.YUN_JIN to listOf("Yunjin"),
+    CharacterType.RAIDEN_SHOGUN to listOf("Ei", "Baal"),
 )
 
 /**
  * Map of names of all characters
  */
-private val names = Characters.values().associateWith { it.name }
+private val names = CharacterType.values().associateWith { it.name }
 
 /**
  * Map of characters names and aliases
  * which are also normalized and permuted
  */
-private val permutations = Characters.values().associateWith { char ->
+private val permutations = CharacterType.values().associateWith { char ->
     val name = names[char]?.normal()
         ?: throw AyamiException("Could not find a name for $char in map of names")
 
@@ -102,7 +102,7 @@ private val permutations = Characters.values().associateWith { char ->
 
     val merged = aliases + name
 
-    val permutationDisabled = Characters::class.findAnnotation<DisablePermutation>()?.value
+    val permutationDisabled = CharacterType::class.findAnnotation<DisablePermutation>()?.value
     if (permutationDisabled?.contains(char.name) == true) {
         return@associateWith merged
     }
@@ -111,15 +111,15 @@ private val permutations = Characters.values().associateWith { char ->
 }
 
 /**
- * Returns a [Characters] using Jaro Winkler similarity
+ * Returns a [CharacterType] using Jaro Winkler similarity
  */
-fun characterTypeFromSimilarName(query: String): Characters? {
+fun characterTypeFromSimilarName(query: String): CharacterType? {
     val similarity = JaroWinklerSimilarity()
     val normalQuery = query.normal()
 
-    val results = mutableListOf<Pair<Characters, Double>>()
+    val results = mutableListOf<Pair<CharacterType, Double>>()
 
-    Characters.values().forEach { char ->
+    CharacterType.values().forEach { char ->
         permutations.getOrDefault(char, listOf()).forEach { name ->
             val score = similarity.apply(normalQuery, name)
             results.add(Pair(char, score))

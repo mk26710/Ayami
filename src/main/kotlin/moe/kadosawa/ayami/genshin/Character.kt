@@ -7,7 +7,7 @@ import moe.kadosawa.ayami.AyamiException
 @Serializable
 data class Character(
     @SerialName("ENUM")
-    val enum: Characters,
+    val enum: CharacterType,
     @SerialName("ASCENSION")
     val ascension: String?,
     @SerialName("TALENTS")

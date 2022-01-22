@@ -1,12 +1,12 @@
 package moe.kadosawa.ayami
 
-import moe.kadosawa.ayami.genshin.Characters
+import moe.kadosawa.ayami.genshin.CharacterType
 import moe.kadosawa.ayami.genshin.characterTypeFromSimilarName
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ApproximateSearchTests {
-    private fun runQueries(target: Characters, queries: List<String>) {
+    private fun runQueries(target: CharacterType, queries: List<String>) {
         queries.forEach { query ->
             val enum = characterTypeFromSimilarName(query)
             assertEquals(target, enum, "Querying by $query should've resulted with a different enum!")
@@ -15,7 +15,7 @@ class ApproximateSearchTests {
 
     @Test
     fun testKamisatoAyakaLookups() {
-        val target = Characters.KAMISATO_AYAKA
+        val target = CharacterType.KAMISATO_AYAKA
         val queries = listOf(
             "Kamisato Ayaka",
             "Ayaka Kamisato",
@@ -31,7 +31,7 @@ class ApproximateSearchTests {
 
     @Test
     fun testRaidenShogunLookups() {
-        val target = Characters.RAIDEN_SHOGUN
+        val target = CharacterType.RAIDEN_SHOGUN
         val queries = listOf(
             "Raiden Shogun",
             "Shogun Raiden",
