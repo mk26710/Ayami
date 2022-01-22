@@ -28,7 +28,8 @@ private annotation class DisablePermutation(val value: Array<String>)
  * Enumeration of playable Genshin Impact
  * characters as of version 2.4
  */
-enum class Characters(val aliases: List<String>) {
+@DisablePermutation(["HU_TAO", "YUN_JIN"])
+enum class Characters {
     ALBEDO,
     ALOY,
     ARATAKI_ITTO,
