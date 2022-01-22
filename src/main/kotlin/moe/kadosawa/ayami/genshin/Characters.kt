@@ -6,10 +6,23 @@
 package moe.kadosawa.ayami.genshin
 
 import com.google.common.collect.Collections2
+import moe.kadosawa.ayami.AyamiException
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
+import kotlin.reflect.full.findAnnotation
 
 private fun String.permute() =
     Collections2.permutations(split(Regex("\\s+"))).map { it.joinToString(" ") }
+
+private fun String.normal() = trim()
+    .replace("_", " ")
+    .split("\\s+".toRegex())
+    .joinToString(" ")
+    .lowercase()
+
+/**
+ * Prevents character name and aliases from permutation
+ */
+private annotation class DisablePermutation(val value: Array<String>)
 
 /**
  * Enumeration of playable Genshin Impact
@@ -29,10 +42,8 @@ enum class Characters(val aliases: List<String>) {
     FISCHL,
     GANYU,
     GOROU,
-    HU_TAO {
-        override val permuteNames = false
-    },
-    JEAN("Jean Gunnhildr".permute()),
+    HU_TAO,
+    JEAN,
     KAEDEHARA_KAZUHA,
     KAEYA,
     KAMISATO_AYAKA,
@@ -44,7 +55,7 @@ enum class Characters(val aliases: List<String>) {
     NINGGUANG,
     NOELLE,
     QIQI,
-    RAIDEN_SHOGUN("Ei", "Baal"),
+    RAIDEN_SHOGUN,
     RAZOR,
     ROSARIA,
     SANGONOMIYA_KOKOMI,
@@ -62,39 +73,57 @@ enum class Characters(val aliases: List<String>) {
     YOIMIYA,
     YUN_JIN,
     ZHONGLI;
+}
 
-    constructor(vararg aliases: String) : this(aliases.toList())
+/**
+ * Map of name aliases for characters that have them
+ */
+private val aliases = mapOf(
+    Characters.JEAN to listOf("Jean Gunnhildr"),
+    Characters.YUN_JIN to listOf("Yunjin"),
+    Characters.RAIDEN_SHOGUN to listOf("Ei", "Baal"),
+)
 
-    open val permuteNames: Boolean = true
+/**
+ * Map of names of all characters
+ */
+private val names = Characters.values().associateWith { it.name }
 
-    companion object {
-        private fun String.normal() = trim()
-            .replace("_", " ")
-            .split("\\s+".toRegex())
-            .joinToString(" ")
-            .lowercase()
+/**
+ * Map of characters names and aliases
+ * which are also normalized and permuted
+ */
+private val permutations = Characters.values().associateWith { char ->
+    val name = names[char]?.normal()
+        ?: throw AyamiException("Could not find a name for $char in map of names")
 
-        fun fromSimilarName(query: String): Characters? {
-            val similarity = JaroWinklerSimilarity()
-            val normalQuery = query.normal()
+    val aliases = aliases.getOrDefault(char, listOf()).map { it.normal() }
 
-            val results = mutableListOf<Pair<Characters, Double>>()
+    val merged = aliases + name
 
-            values().forEach { char ->
-                val aliases = char.aliases.map { it.normal() }
-                val names = if (char.permuteNames) {
-                    char.name.normal().permute()
-                } else {
-                    listOf(char.name.normal())
-                }
+    val permutationDisabled = Characters::class.findAnnotation<DisablePermutation>()?.value
+    if (permutationDisabled?.contains(char.name) == true) {
+        return@associateWith merged
+    }
 
-                (names + aliases).forEach { name ->
-                    val score = similarity.apply(normalQuery, name)
-                    results.add(Pair(char, score))
-                }
-            }
+    merged.flatMap { it.permute() }
+}
 
-            return results.maxWithOrNull(compareBy { it.second })?.first
+/**
+ * Returns a [Characters] using Jaro Winkler similarity
+ */
+fun characterTypeFromSimilarName(query: String): Characters? {
+    val similarity = JaroWinklerSimilarity()
+    val normalQuery = query.normal()
+
+    val results = mutableListOf<Pair<Characters, Double>>()
+
+    Characters.values().forEach { char ->
+        permutations.getOrDefault(char, listOf()).forEach { name ->
+            val score = similarity.apply(normalQuery, name)
+            results.add(Pair(char, score))
         }
     }
+
+    return results.maxWithOrNull(compareBy { it.second })?.first
 }
