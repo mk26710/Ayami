@@ -7,6 +7,7 @@ import moe.kadosawa.ayami.listeners.DefaultListener
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
+import java.util.concurrent.ConcurrentHashMap
 
 fun lazyJDA() = lazy {
     JDABuilder
@@ -23,7 +24,7 @@ object Ayami {
     val coroutineScope = CoroutineScope(Dispatchers.Default)
 
     val jda by lazyJDA()
-    val commands = mutableMapOf<String, SlashCommand>()
+    val commands = ConcurrentHashMap<String, SlashCommand>()
 
     fun addCommand(command: SlashCommand) {
         commands[command.path] = command
