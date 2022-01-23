@@ -1,9 +1,7 @@
 package moe.kadosawa.ayami
 
 import kotlinx.coroutines.runBlocking
-import moe.kadosawa.ayami.commands.CharacterMaterials
-import moe.kadosawa.ayami.commands.PingCommand
-import moe.kadosawa.ayami.commands.ResinCommand
+import moe.kadosawa.ayami.commands.*
 import moe.kadosawa.ayami.database.DatabaseFactory
 import mu.KotlinLogging
 import kotlin.system.exitProcess
@@ -30,6 +28,8 @@ fun main(args: Array<String>) = runBlocking {
         addCommand(PingCommand())
         addCommand(ResinCommand())
         addCommand(CharacterMaterials())
+        addCommand(ReminderAdd())
+        addCommand(ReminderList())
     }
 
     Ayami.jda.awaitReady()
