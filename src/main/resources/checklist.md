@@ -1,0 +1,48 @@
+# Images Checklist
+
+- [x] Kamisato Ayaka
+- [x] Ganyu
+- [x] Shenhe
+- [ ] Keqing
+- [ ] Yae Miko (coming soon)
+- [ ] Mona
+- [ ] Shogun Raiden
+- [ ] Albedo
+- [ ] Aloy
+- [ ] Amber
+- [ ] Arataki Itto
+- [ ] Barbara
+- [ ] Beidou
+- [ ] Bennett
+- [ ] Chongyun
+- [ ] Diluc
+- [ ] Diona
+- [ ] Eula
+- [ ] Fischl
+- [ ] Gorou
+- [ ] Hu Tao
+- [ ] Jean
+- [ ] Kaedehara Kazuha
+- [ ] Kaeya
+- [ ] Klee
+- [ ] Kujou Sara
+- [ ] Lisa
+- [ ] Ningguang
+- [ ] Noelle
+- [ ] Qiqi
+- [ ] Razor
+- [ ] Rosaria
+- [ ] Kokomi
+- [ ] Sayu
+- [ ] Sucrose
+- [ ] Tartaglia
+- [ ] Thoma
+- [ ] Venti
+- [ ] Xiangling
+- [ ] Xiao
+- [ ] Xingqiu
+- [ ] Xinyan
+- [ ] Yanfei
+- [ ] Yoimiya
+- [ ] Yun Jin
+- [ ] Zhongli
