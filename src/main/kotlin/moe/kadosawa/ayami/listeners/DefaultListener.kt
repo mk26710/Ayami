@@ -38,6 +38,7 @@ class DefaultListener : ListenerAdapter() {
             } catch (ex: AyamiBaseException) {
                 ExceptionHandler.handle(event, ex)
             } catch (ex: Throwable) {
+                ex.printStackTrace()
                 ExceptionHandler.handle(event, CommandException(cause = ex))
             }
         }
