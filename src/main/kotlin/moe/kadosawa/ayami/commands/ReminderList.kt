@@ -21,10 +21,7 @@ import moe.kadosawa.ayami.database.services.RemindersService
 import moe.kadosawa.ayami.jda.await
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-// TODO: Paginated reply with buttons
-class ReminderList : SlashCommand() {
-    override val path = "reminder/list"
-
+class ReminderList : SlashCommand("reminder/list") {
     override suspend fun invoke(e: SlashCommandEvent) {
         e.deferReply(true).await()
 

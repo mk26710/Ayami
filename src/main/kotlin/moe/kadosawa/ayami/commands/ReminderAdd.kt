@@ -28,9 +28,7 @@ import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.utils.TimeFormat
 import kotlin.time.Duration
 
-class ReminderAdd : SlashCommand() {
-    override val path = "reminder/add"
-
+class ReminderAdd : SlashCommand("reminder/add") {
     override suspend fun invoke(e: SlashCommandEvent) {
         e.tryDefer(e.isPrivate)?.await()
 

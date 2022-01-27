@@ -25,9 +25,7 @@ import moe.kadosawa.ayami.jda.isPrivate
 import moe.kadosawa.ayami.jda.tryDefer
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-class CharacterMaterials : SlashCommand() {
-    override val path = "character/materials"
-
+class CharacterMaterials : SlashCommand("character/materials") {
     override suspend fun invoke(e: SlashCommandEvent) {
         e.tryDefer(e.isPrivate)?.await()
 

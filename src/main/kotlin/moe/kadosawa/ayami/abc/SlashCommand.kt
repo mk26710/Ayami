@@ -19,9 +19,7 @@ package moe.kadosawa.ayami.abc
 import moe.kadosawa.ayami.CheckFailure
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
-abstract class SlashCommand {
-    abstract val path: String
-
+abstract class SlashCommand(val path: String) {
     open suspend fun check(e: SlashCommandEvent): Boolean = true
 
     abstract suspend fun invoke(e: SlashCommandEvent)

@@ -23,9 +23,7 @@ import moe.kadosawa.ayami.jda.tryDefer
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import kotlin.system.measureTimeMillis
 
-class PingCommand : SlashCommand() {
-    override val path = "ping"
-
+class PingCommand : SlashCommand("ping") {
     override suspend fun invoke(e: SlashCommandEvent) {
         e.tryDefer(e.isPrivate)?.await()
 

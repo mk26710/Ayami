@@ -24,9 +24,7 @@ import moe.kadosawa.ayami.jda.tryDefer
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.utils.TimeFormat
 
-class ResinCommand : SlashCommand() {
-    override val path = "resin"
-
+class ResinCommand : SlashCommand("resin") {
     override suspend fun invoke(e: SlashCommandEvent) {
         e.tryDefer(e.isPrivate)?.await()
 
