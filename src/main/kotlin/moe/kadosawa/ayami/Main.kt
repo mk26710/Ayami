@@ -19,6 +19,10 @@ package moe.kadosawa.ayami
 import kotlinx.coroutines.runBlocking
 import moe.kadosawa.ayami.commands.*
 import moe.kadosawa.ayami.database.DatabaseFactory
+import moe.kadosawa.ayami.utils.configPath
+import moe.kadosawa.ayami.utils.dbInit
+import moe.kadosawa.ayami.utils.loadProperties
+import moe.kadosawa.ayami.utils.parseArgs
 import mu.KotlinLogging
 import kotlin.system.exitProcess
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package moe.kadosawa.ayami
+package moe.kadosawa.ayami.utils
 
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType

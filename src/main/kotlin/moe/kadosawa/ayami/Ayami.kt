@@ -24,6 +24,7 @@ import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.ui.ButtonCallback
 import moe.kadosawa.ayami.listeners.DefaultListener
 import moe.kadosawa.ayami.listeners.UIListener
+import moe.kadosawa.ayami.utils.Config
 import moe.kadosawa.ayami.utils.Slashes
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
