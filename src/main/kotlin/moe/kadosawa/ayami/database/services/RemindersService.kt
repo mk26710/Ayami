@@ -21,6 +21,7 @@ import moe.kadosawa.ayami.database.tables.Reminder
 import moe.kadosawa.ayami.database.tables.Reminders
 import mu.KotlinLogging
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 
 object RemindersService {
@@ -62,6 +63,19 @@ object RemindersService {
         }
 
         return toReminder(row)
+    }
+
+    /**
+     * Removes a row by specified reminder id and user id. If reminder
+     * is null then all active reminders of the user will be removed.
+     */
+    suspend fun remove(userId: Long, id: Long? = null) = newSuspendedTransaction {
+        var statement = Reminders.authorId eq userId
+        if (id != null) {
+            statement = statement.and { Reminders.id eq id }
+        }
+
+        Reminders.deleteWhere{ statement }
     }
 
     /**
