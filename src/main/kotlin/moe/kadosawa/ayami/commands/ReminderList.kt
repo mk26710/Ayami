@@ -19,6 +19,7 @@ package moe.kadosawa.ayami.commands
 import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.database.services.RemindersService
 import moe.kadosawa.ayami.jda.await
+import moe.kadosawa.ayami.jda.dateTimeLong
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
 class ReminderList : SlashCommand("reminder/list") {
@@ -27,7 +28,7 @@ class ReminderList : SlashCommand("reminder/list") {
 
         val reminders = RemindersService.getUserReminders(e.user.idLong, e.guild?.idLong)
         val joined = reminders.joinToString(separator = "\n") {
-            "`#${it.id}` | <t:${it.triggerAt.epochSeconds}:F> | ${it.content.take(50)}"
+            "`#${it.id}` | ${dateTimeLong(it.triggerAt)} | ${it.content.take(50)}"
         }
 
         e.hook.sendMessage(joined).await()
