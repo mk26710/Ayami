@@ -27,8 +27,10 @@ import moe.kadosawa.ayami.listeners.UIListener
 import moe.kadosawa.ayami.utils.Slashes
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.entities.ApplicationInfo
 import net.dv8tion.jda.api.requests.GatewayIntent
 import java.util.concurrent.ConcurrentHashMap
+import kotlin.properties.Delegates
 
 object Ayami {
     @Suppress("unused")
@@ -44,6 +46,8 @@ object Ayami {
             .addEventListeners(UIListener())
             .build()
     }
+
+    var appInfo by Delegates.notNull<ApplicationInfo>()
 
     val defaultScope = CoroutineScope(Dispatchers.Default)
     val cleanupScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)

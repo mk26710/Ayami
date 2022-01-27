@@ -21,10 +21,18 @@ import moe.kadosawa.ayami.Ayami
 import moe.kadosawa.ayami.AyamiBaseException
 import moe.kadosawa.ayami.CommandException
 import moe.kadosawa.ayami.ExceptionHandler
+import moe.kadosawa.ayami.jda.await
+import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class DefaultListener : ListenerAdapter() {
+    override fun onReady(event: ReadyEvent) {
+        Ayami.defaultScope.launch {
+            Ayami.appInfo = Ayami.jda.retrieveApplicationInfo().await()
+        }
+    }
+
     override fun onSlashCommand(event: SlashCommandEvent) {
         val command = Ayami.commands[event.commandPath]
         if (command == null) {
