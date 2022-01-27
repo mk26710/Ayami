@@ -27,9 +27,9 @@ class ReminderList : SlashCommand("reminder/list") {
         e.deferReply(true).await()
 
         val reminders = RemindersService.getUserReminders(e.user.idLong, e.guild?.idLong)
-        val joined = reminders.joinToString(separator = "\n") {
-            "`#${it.id}` | ${dateTimeLong(it.triggerAt)} | ${it.content.take(50)}"
-        }
+        val joined = reminders
+            .joinToString(separator = "\n") { "`#${it.id}` | ${dateTimeLong(it.triggerAt)} | ${it.content.take(50)}" }
+            .ifEmpty { "You don't have active reminders." }
 
         e.hook.sendMessage(joined).await()
     }
