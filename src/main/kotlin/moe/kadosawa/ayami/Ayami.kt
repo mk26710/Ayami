@@ -20,9 +20,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import moe.kadosawa.ayami.abc.SlashCommand
+import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.ui.ButtonCallback
 import moe.kadosawa.ayami.listeners.DefaultListener
 import moe.kadosawa.ayami.listeners.UIListener
+import moe.kadosawa.ayami.utils.Slashes
 import mu.KotlinLogging
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
@@ -51,6 +53,19 @@ object Ayami {
 
     fun addCommand(command: SlashCommand) {
         commands[command.path] = command
+    }
+
+    suspend fun refreshCommands(global: Boolean = true, debug: Boolean = true) {
+        if (global)
+            jda.updateCommands()
+                .addCommands(Slashes.globalData)
+                .await()
+
+        if (debug)
+            jda.getGuildById(Config.Bot.guild)!!
+                .updateCommands()
+                .addCommands(Slashes.combinedData)
+                .await()
     }
 }
 
