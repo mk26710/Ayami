@@ -16,7 +16,7 @@
 
 package moe.kadosawa.ayami.abc
 
-import moe.kadosawa.ayami.CheckFailure
+import moe.kadosawa.ayami.exceptions.CheckFailure
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 
 abstract class SlashCommand(val path: String) {

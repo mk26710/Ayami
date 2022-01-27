@@ -18,7 +18,7 @@ package moe.kadosawa.ayami.genshin
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
-import moe.kadosawa.ayami.AyamiException
+import moe.kadosawa.ayami.exceptions.AyamiException
 import kotlin.time.Duration.Companion.minutes
 
 object GenshinUtils {

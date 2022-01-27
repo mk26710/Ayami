@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package moe.kadosawa.ayami
+package moe.kadosawa.ayami.exceptions
 
 import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.tryDefer

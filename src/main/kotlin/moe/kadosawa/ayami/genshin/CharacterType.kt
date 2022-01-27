@@ -22,7 +22,7 @@
 package moe.kadosawa.ayami.genshin
 
 import com.google.common.collect.Collections2
-import moe.kadosawa.ayami.AyamiException
+import moe.kadosawa.ayami.exceptions.AyamiException
 import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import kotlin.reflect.full.findAnnotation
 

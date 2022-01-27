@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package moe.kadosawa.ayami
+package moe.kadosawa.ayami.exceptions
 
 sealed class AyamiBaseException(message: String? = null, cause: Throwable? = null) : Throwable(message, cause)
 class AyamiException(message: String? = null, cause: Throwable? = null) : AyamiBaseException(message, cause)

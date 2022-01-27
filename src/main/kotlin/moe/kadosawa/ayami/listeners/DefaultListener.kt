@@ -18,9 +18,9 @@ package moe.kadosawa.ayami.listeners
 
 import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.Ayami
-import moe.kadosawa.ayami.AyamiBaseException
-import moe.kadosawa.ayami.CommandException
-import moe.kadosawa.ayami.ExceptionHandler
+import moe.kadosawa.ayami.exceptions.AyamiBaseException
+import moe.kadosawa.ayami.exceptions.CommandException
+import moe.kadosawa.ayami.exceptions.ExceptionHandler
 import moe.kadosawa.ayami.jda.await
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent

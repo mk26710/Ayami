@@ -18,7 +18,7 @@ package moe.kadosawa.ayami.genshin
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import moe.kadosawa.ayami.AyamiException
+import moe.kadosawa.ayami.exceptions.AyamiException
 
 @Serializable
 data class Character(

@@ -17,7 +17,7 @@
 package moe.kadosawa.ayami.commands
 
 import moe.kadosawa.ayami.Ayami
-import moe.kadosawa.ayami.BadArgument
+import moe.kadosawa.ayami.exceptions.BadArgument
 import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.jda.await
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent

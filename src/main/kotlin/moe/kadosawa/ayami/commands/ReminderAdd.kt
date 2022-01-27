@@ -17,7 +17,7 @@
 package moe.kadosawa.ayami.commands
 
 import kotlinx.datetime.Clock
-import moe.kadosawa.ayami.BadArgument
+import moe.kadosawa.ayami.exceptions.BadArgument
 import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.database.services.RemindersService
 import moe.kadosawa.ayami.database.tables.NewReminder
