@@ -46,6 +46,7 @@ fun main(args: Array<String>) = runBlocking {
         addCommand(CharacterMaterials())
         addCommand(ReminderAdd())
         addCommand(ReminderList())
+        addCommand(RefreshCommands())
     }
 
     Ayami.jda.awaitReady()
