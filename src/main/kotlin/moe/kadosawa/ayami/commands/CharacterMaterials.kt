@@ -23,10 +23,10 @@ import moe.kadosawa.ayami.genshin.fromSimilarName
 import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.isPrivate
 import moe.kadosawa.ayami.jda.tryDefer
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 class CharacterMaterials : SlashCommand("character/materials") {
-    override suspend fun invoke(e: SlashCommandEvent) {
+    override suspend fun invoke(e: SlashCommandInteractionEvent) {
         e.tryDefer(e.isPrivate)?.await()
 
         val query = e.getOption("query")!!.asString

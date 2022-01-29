@@ -48,7 +48,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
 
     // Discord API
-    implementation("net.dv8tion:JDA:5.0.0-alpha.4") { exclude(module = "opus-java") }
+    implementation("net.dv8tion:JDA:5.0.0-alpha.5") { exclude(module = "opus-java") }
 
     // Database
     implementation("com.zaxxer:HikariCP:5.0.1")

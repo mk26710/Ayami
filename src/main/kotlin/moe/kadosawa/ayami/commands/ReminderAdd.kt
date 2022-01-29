@@ -25,11 +25,11 @@ import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.dateTimeLong
 import moe.kadosawa.ayami.jda.isPrivate
 import moe.kadosawa.ayami.jda.tryDefer
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import kotlin.time.Duration
 
 class ReminderAdd : SlashCommand("reminder/add") {
-    override suspend fun invoke(e: SlashCommandEvent) {
+    override suspend fun invoke(e: SlashCommandInteractionEvent) {
         e.tryDefer(e.isPrivate)?.await()
 
         val duration = e.getOption("duration")!!.asString.let(Duration::parseOrNull)

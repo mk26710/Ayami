@@ -22,17 +22,17 @@ import kotlinx.coroutines.launch
 import moe.kadosawa.ayami.Ayami
 import mu.KotlinLogging
 import net.dv8tion.jda.api.entities.Emoji
-import net.dv8tion.jda.api.events.interaction.ButtonClickEvent
-import net.dv8tion.jda.api.interactions.components.Button
-import net.dv8tion.jda.api.interactions.components.ButtonStyle
-import net.dv8tion.jda.internal.interactions.ButtonImpl
+import net.dv8tion.jda.api.interactions.components.buttons.Button
+import net.dv8tion.jda.api.interactions.components.buttons.ButtonInteraction
+import net.dv8tion.jda.api.interactions.components.buttons.ButtonStyle
+import net.dv8tion.jda.internal.interactions.component.ButtonImpl
 import java.util.*
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 
 private val logger = KotlinLogging.logger { }
 
-typealias ButtonCallback = suspend (event: ButtonClickEvent) -> Unit
+typealias ButtonCallback = suspend (event: ButtonInteraction) -> Unit
 
 // I am most likely doing some weird shit with waiter parameter here but well at least it works
 

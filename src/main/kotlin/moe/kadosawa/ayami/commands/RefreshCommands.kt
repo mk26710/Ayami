@@ -20,13 +20,13 @@ import moe.kadosawa.ayami.Ayami
 import moe.kadosawa.ayami.exceptions.BadArgument
 import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.jda.await
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 class RefreshCommands : SlashCommand("refresh-commands") {
-    override suspend fun check(e: SlashCommandEvent) =
+    override suspend fun check(e: SlashCommandInteractionEvent) =
         e.user.id == Ayami.appInfo.owner.id
 
-    override suspend fun invoke(e: SlashCommandEvent) {
+    override suspend fun invoke(e: SlashCommandInteractionEvent) {
         e.deferReply().await()
 
         val global = e.getOption("global")!!.asBoolean

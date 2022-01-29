@@ -19,7 +19,9 @@ package moe.kadosawa.ayami.jda
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
 import net.dv8tion.jda.api.interactions.commands.build.OptionData
+import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData
+import net.dv8tion.jda.internal.interactions.CommandDataImpl
 
 private val PRIVACY_OPTION_DATA =
     OptionData(OptionType.BOOLEAN, "private", "Ayami will respond to you using ephemeral messages", false)
@@ -27,7 +29,7 @@ private val PRIVACY_OPTION_DATA =
 /**
  * Adds ``private`` option to the command
  */
-fun CommandData.privacyOption(): CommandData {
+fun SlashCommandData.privacyOption(): CommandData {
     return addOptions(PRIVACY_OPTION_DATA)
 }
 
@@ -42,25 +44,25 @@ fun SubcommandData.privacyOption(): SubcommandData {
  * Kotlin-style builders
  */
 
-fun command(name: String, description: String, block: CommandData.() -> Unit = {}): CommandData {
-    return CommandData(name, description).apply(block)
+fun command(name: String, description: String, block: CommandDataImpl.() -> Unit = {}): SlashCommandData {
+    return CommandDataImpl(name, description).apply(block)
 }
 
 fun subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): SubcommandData {
     return SubcommandData(name, description).apply(block)
 }
 
-fun CommandData.subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): CommandData {
+fun SlashCommandData.subcommandData(name: String, description: String, block: SubcommandData.() -> Unit = {}): SlashCommandData {
     return addSubcommands(SubcommandData(name, description).apply(block))
 }
 
-fun CommandData.option(
+fun SlashCommandData.option(
     type: OptionType,
     name: String,
     description: String,
     required: Boolean = true,
     block: OptionData.() -> Unit = {}
-): CommandData {
+): SlashCommandData {
     return addOptions(OptionData(type, name, description, required).apply(block))
 }
 

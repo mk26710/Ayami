@@ -20,10 +20,10 @@ import moe.kadosawa.ayami.abc.SlashCommand
 import moe.kadosawa.ayami.database.services.RemindersService
 import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.dateTimeLong
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 class ReminderList : SlashCommand("reminder/list") {
-    override suspend fun invoke(e: SlashCommandEvent) {
+    override suspend fun invoke(e: SlashCommandInteractionEvent) {
         e.deferReply(true).await()
 
         val reminders = RemindersService.getUserReminders(e.user.idLong, e.guild?.idLong)

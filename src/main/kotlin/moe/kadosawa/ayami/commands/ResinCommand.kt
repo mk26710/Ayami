@@ -22,10 +22,10 @@ import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.dateTimeLong
 import moe.kadosawa.ayami.jda.isPrivate
 import moe.kadosawa.ayami.jda.tryDefer
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 class ResinCommand : SlashCommand("resin") {
-    override suspend fun invoke(e: SlashCommandEvent) {
+    override suspend fun invoke(e: SlashCommandInteractionEvent) {
         e.tryDefer(e.isPrivate)?.await()
 
         val current = e.getOption("current")!!.asLong

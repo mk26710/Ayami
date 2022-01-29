@@ -18,10 +18,10 @@ package moe.kadosawa.ayami.exceptions
 
 import moe.kadosawa.ayami.jda.await
 import moe.kadosawa.ayami.jda.tryDefer
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 object ExceptionHandler {
-    suspend fun handle(event: SlashCommandEvent, ex: AyamiBaseException) {
+    suspend fun handle(event: SlashCommandInteractionEvent, ex: AyamiBaseException) {
         event.tryDefer(true)?.await()
 
         when (ex) {

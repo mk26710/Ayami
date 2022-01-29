@@ -23,7 +23,7 @@ import moe.kadosawa.ayami.exceptions.CommandException
 import moe.kadosawa.ayami.exceptions.ExceptionHandler
 import moe.kadosawa.ayami.jda.await
 import net.dv8tion.jda.api.events.ReadyEvent
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class DefaultListener : ListenerAdapter() {
@@ -33,7 +33,7 @@ class DefaultListener : ListenerAdapter() {
         }
     }
 
-    override fun onSlashCommand(event: SlashCommandEvent) {
+    override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
         val command = Ayami.commands[event.commandPath]
         if (command == null) {
             event.reply("Command not found.").setEphemeral(true).queue()

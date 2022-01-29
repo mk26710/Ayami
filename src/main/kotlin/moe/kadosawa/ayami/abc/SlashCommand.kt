@@ -17,14 +17,14 @@
 package moe.kadosawa.ayami.abc
 
 import moe.kadosawa.ayami.exceptions.CheckFailure
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 
 abstract class SlashCommand(val path: String) {
-    open suspend fun check(e: SlashCommandEvent): Boolean = true
+    open suspend fun check(e: SlashCommandInteractionEvent): Boolean = true
 
-    abstract suspend fun invoke(e: SlashCommandEvent)
+    abstract suspend fun invoke(e: SlashCommandInteractionEvent)
 
-    suspend fun run(e: SlashCommandEvent) {
+    suspend fun run(e: SlashCommandInteractionEvent) {
         val canRun = check(e)
         if (!canRun) {
             throw CheckFailure("You don't have access to this command, sorry.")
